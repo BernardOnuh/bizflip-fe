@@ -66,24 +66,8 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-  <div className="relative inline-block p-1 rounded-md gradient-wrapper">
-    <div className="absolute inset-0 gradient-blur rounded-md"></div>
-    <div className="relative flex items-center justify-center h-full w-full">
-      <ConnectButton />
-    </div>
-  </div>
-</li>
-
-<style jsx>{`
-  .gradient-wrapper {
-    background: linear-gradient(to right, #8b5cf6, #7c3aed, #6d28d9);
-  }
-  .gradient-blur {
-    background: linear-gradient(to right, #8b5cf6, #7c3aed, #6d28d9);
-    filter: blur(10px);
-  }
-`}</style>
-
+                <ConnectButton/>
+              </li>
             </ul>
           </div>
           </div>
