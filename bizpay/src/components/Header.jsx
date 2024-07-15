@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Drawermob from './Drawermob'; // Ensure this is properly imported
+import Drawer from './Drawermob'; // Ensure this is properly imported
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -85,7 +85,7 @@ export default function Header() {
             </div>
           </div>
         </nav>
-        <Drawermob open={open} setOpen={setOpen} />
+        <Drawer open={open} setOpen={setOpen} />
       </div>
     </>
   );
