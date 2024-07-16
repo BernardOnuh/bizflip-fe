@@ -139,18 +139,18 @@ const Footer = ({ border }) => {
           </div>
         </div>
         <div className={styles.footerCategories}>
-          <div className={styles.footerLogo}>
-            <Image src={logo} alt="logo" className={styles.logo} />
-            <p>
-              The world's first and best web3 based solution for asset
-              acquisition. Join a community of dreamers, innovators and doers.
-              From builders to investors, bring your dreams to fruition. Tap &
-              swipe on assets available. You never know when you’ll find the
-              next hidden gem. Bizflip allows users to list assets in e-commerce,
-              brick and mortar, dapps & so much more. From cash flowing and
-              profitable to pre-seed ventures, this is where you`ll find it all.
-            </p>
-          </div>
+        <div className={styles.footerLogo}>
+          <Image src={logo} alt="logo" className={styles.logo} />
+          <p>
+            The world&apos;s first and best web3 based solution for asset
+            acquisition. Join a community of dreamers, innovators and doers.
+            From builders to investors, bring your dreams to fruition. Tap &
+            swipe on assets available. You never know when you&apos;ll find the
+            next hidden gem. Bizflip allows users to list assets in e-commerce,
+            brick and mortar, dapps &amp; so much more. From cash flowing and
+            profitable to pre-seed ventures, this is where you&apos;ll find it all.
+          </p>
+        </div>
           <div className={styles.footerList}>
             <h4>My Account</h4>
             <ul>
