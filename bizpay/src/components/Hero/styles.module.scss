@@ -1,0 +1,122 @@
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  padding-top: 75px;
+  box-sizing: border-box;
+}
+
+.body {
+  margin-left: auto;
+  margin-right: auto;
+  // display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 80px);
+  // background-color: rgb(0, 0, 0);
+  background-image: url("/images/imgs/BizFlip.png");
+  background-size: 100% 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .body {
+    background-image: url("/images/imgs/BizFlip_Mobile.png");
+  }
+}
+
+.main {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  min-height: inherit;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 26px;
+  background: transparent;
+  flex-direction: column;
+  // background-color: rgb(0, 0, 0);
+  .title_area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    .connct_title {
+      color: #f0f0f0;
+      font-size: 72px;
+      font-weight: bold;
+      padding: 10px;
+    }
+    .title_logo {
+      width: 30px;
+      height: 35px;
+      margin-top: -40px;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .main {
+    .title_area {
+      .connct_title {
+        font-size: 36px;
+      }
+      .title_logo {
+        width: 20px;
+        height: 25px;
+        margin-top: -40px;
+      }
+    }
+  }
+}
+
+.title {
+  padding: 20px;
+  font-size: x-large;
+  color: #f0f0f0;
+  width: auto;
+  text-align: center;
+  margin-top: 250px;
+}
+
+.btn_group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+
+  .dox_btn {
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+    background: #f0f0f0;
+    border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    font-weight: 700;
+  }
+}
+
+.connect_btn {
+  button {
+    padding: 20px 40px;
+    background: rgba(63, 94, 251, 0.5);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 400ms ease-in-out;
+    color: white;
+    font-size: 24px;
+    border-color: rgba(63, 94, 251, 1);
+    box-shadow: 0px 5px 15px black;
+
+    &:hover {
+      background-color: #fc466b;
+      border-color: #f0f0f0;
+    }
+  }
+}
