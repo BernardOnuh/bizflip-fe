@@ -75,3 +75,9 @@
   gap: 12px;
   align-items: center;
 }
+
+
+.react-chatbot-kit-chat-input__input::placeholder {
+  color: black !important;
+  z-index: 1005;
+}

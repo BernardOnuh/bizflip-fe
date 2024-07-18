@@ -11,7 +11,7 @@ import {
 } from 'react-icons/bs';
 import { FaTiktok } from 'react-icons/fa';
 //import { Categories } from 'src/constants/filter.constants';
-//import Chat from 'src/components/Chat';
+//import Chat from './Chatbox/chat'
 import Image from 'next/image';
 import logo from '../../../public/images/imgs/logo.png';
 
@@ -39,7 +39,7 @@ const Footer = ({ border }) => {
   return (
     <div className={styles.footer}>
       <div className={styles.footerContainer}>
-        {/*<Chat />*/}
+        
         <div className={styles.footerSocial}>
           <div className={styles.stayLoop}>
             <div>
