@@ -1,0 +1,27 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    padding-top: 80px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .contents {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+  
+    .listNumber {
+      list-style-type: decimal;
+    }
+    p {
+      line-height: 20px;
+    }
+    li {
+      line-height: 22px;
+    }
+  }
+  

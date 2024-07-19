@@ -1,0 +1,55 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    padding-top: 80px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .contents {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+  
+    .listNumber {
+      list-style-type: decimal;
+    }
+    .listAlphabetic {
+      list-style-type: lower-alpha;
+      li {
+        text-align: left;
+      }
+    }
+    .listRomain {
+      list-style-type: upper-roman;
+      .titleIndent {
+        list-style-position: inside;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: center;
+        p {
+          font-weight: 400;
+          text-align: left;
+        }
+        div {
+          font-weight: 400;
+        }
+        ul {
+          font-weight: 400;
+        }
+        li {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  .centered {
+    text-align: center !important;
+  }
+  
+  // p {
+  //   text-indent: 5em;
+  // }
