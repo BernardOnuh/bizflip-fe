@@ -1,17 +1,14 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import Dox from "@/components/Dox";
 import Header from "@/components/Header";
-import Hero from "@/components/Hero/Hero";
-import Chat from '../components/Footer/Chatbox/chat'
-
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function dox() {
   return (
     <div className="">
       <Header/>
-      <Hero/>
-      <Chat/>
+     <Dox/>
     </div>
   );
 }

@@ -50,7 +50,7 @@
 
 .chain-button,
 .account-button {
-  background: linear-gradient(45deg, #007B9A, #008CBA);
+  background: #007bff;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -66,7 +66,7 @@
 
 .chain-button:hover,
 .account-button:hover {
-  background: linear-gradient(45deg, #008CBA, #007B9A);
+  background: #6b0179;
   transform: scale(1.05);
 }
 
@@ -81,3 +81,14 @@
   color: black !important;
   z-index: 1005;
 }
+
+.account-balance {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .account-balance {
+      display: none;
+  }
+}
+

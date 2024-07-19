@@ -29,7 +29,7 @@ export default function Header() {
       <div className="w-[100%]  mx-auto  relative bg-black z-[2]">
         <nav className={`fixed nav-bg-top w-[100%]  bg-black  px-[16px] sm:px-2 md:px-8 mx-auto ${showSecondNavbar ? 'show' : ''}`}>
           <div className="flex flex-wrap items-center justify-between mx-auto py-3">
-            <Link href="#" passHref>
+            <Link href="/" passHref>
               <div className="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer">
                 <Image src="/images/icon.png" width={48} height={48} alt="Flowbite Logo" />
                 <span className="self-center font-roboto font-semibold text-lg whitespace-nowrap text-white">bizflip.io</span>

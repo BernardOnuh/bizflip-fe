@@ -79,9 +79,11 @@ const CustomWallet = () => {
                                     </button>
                                     <button className="account-button" onClick={openAccountModal} type="button">
                                         {account.displayName}
-                                        {account.displayBalance
-                                            ? ` (${account.displayBalance})`
-                                            : ''}
+                                        <span className="account-balance">
+                                            {account.displayBalance
+                                                ? ` (${account.displayBalance})`
+                                                : ''}
+                                        </span>
                                     </button>
                                 </div>
                             );

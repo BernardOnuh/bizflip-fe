@@ -1,0 +1,249 @@
+.container {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    padding-top: 75px;
+    box-sizing: border-box;
+  }
+  
+  .body {
+    margin-left: auto;
+    margin-right: auto;
+    // display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 80px);
+    // background-color: rgb(0, 0, 0);
+    background: -webkit-linear-gradient(-45deg, #fc466b 20%, #3f5efb 100%);
+    background: linear-gradient(135deg, #fc466b 20%, #3f5efb 100%);
+    padding-bottom: 50px;
+  }
+  
+  .bg_liner {
+    height: 150px !important;
+    padding: 0px !important;
+    align-items: baseline !important;
+  }
+  
+  .bg_process_background {
+    background-image: linear-gradient(135deg, #3f5efb 50%, #fc466b 100%);
+  }
+  
+  .mx_auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .main {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 26px;
+    background: transparent;
+    // background-color: rgb(0, 0, 0);
+  }
+  
+  .textContainer {
+    text-align: center;
+  }
+  
+  .btn_group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+  
+    .dox_btn{
+      padding: 10px 20px 10px 20px;
+      cursor: pointer;
+      background: #f0f0f0;
+      border: 1px solid #f0f0f0;
+      border-radius: 5px;
+      font-weight: 700;
+    }
+  }
+  
+  .formInput {
+    width: 300px;
+    outline: none;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #eaeaf1;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .sliderbar {
+    width: 80%;
+  }
+  
+  .dropdownmemue{
+    min-width: 300px;
+  }
+  
+  .bodyText {
+    margin-top: 10px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 40px;
+  }
+  
+  .mainLeft {
+    flex: 1;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .bg_transpernt {
+    background: transparent !important;
+  
+    span {
+      width: 100%;
+      height: 8px;
+    }
+  }
+  
+  .margin-top-5 {
+    margin-top: 52px !important;
+  }
+  
+  .button {
+    width: 168px;
+    height: 48px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 18px;
+    // background-color: #007bff;
+    color: #f56748 !important;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    transition: 0.7s;
+  }
+  
+  .question_answer_left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: animateleft 0.4s;
+  }
+  
+  @keyframes animateleft {
+    from {
+      left: -150px;
+      opacity: 0;
+    }
+  
+    to {
+      left: 0;
+      opacity: 1;
+    }
+  }
+  
+  .question_answer_right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: animateright 0.4s;
+  }
+  
+  @keyframes animateright {
+    from {
+      right: -150px;
+      opacity: 0;
+    }
+  
+    to {
+      right: 0;
+      opacity: 1;
+    }
+  }
+  
+  .question_answer_goneRight {
+    position: relative;
+    animation: animategoneright 0.4s;
+  }
+  
+  @keyframes animategoneright {
+    from {
+      right: 0px;
+      opacity: 1;
+    }
+  
+    to {
+      right: 150px;
+      opacity: 0;
+    }
+  }
+  
+  .question_answer_goneLeft {
+    position: relative;
+    animation: animategoneleft 0.4s;
+  }
+  
+  @keyframes animategoneleft {
+    from {
+      left: 0px;
+      opacity: 1;
+    }
+  
+    to {
+      left: 150px;
+      opacity: 0;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .main {
+      flex-direction: column-reverse;
+      margin-bottom: 40px;
+    }
+  
+    .mainLeft {
+      margin-top: 32px;
+      margin-right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .bodyText {
+      font-size: 20px;
+      line-height: 25px;
+      text-align: center;
+    }
+  }
+  
+  .yes_no{
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+  }
+  

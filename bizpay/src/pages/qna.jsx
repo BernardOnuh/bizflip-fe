@@ -1,17 +1,16 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero/Hero";
+import Qna from "@/components/Qna";
 import Chat from '../components/Footer/Chatbox/chat'
-
+import Header from "@/components/Header";
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function qna() {
   return (
     <div className="">
       <Header/>
-      <Hero/>
-      <Chat/>
+     <Qna/>
+     <Chat/>
     </div>
   );
 }

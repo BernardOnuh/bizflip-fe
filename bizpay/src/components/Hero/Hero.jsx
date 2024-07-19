@@ -7,7 +7,6 @@ import gesture from '../../../public/images/imgs/gesture.png';
 import swipe from '../../../public/images/imgs/swipe.png';
 import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { useAccount } from 'wagmi';
-import Chat from '../Footer/Chatbox/chat';
 import Footer from '../Footer/footer';
 
 const Hero = () => {
@@ -69,7 +68,6 @@ const Hero = () => {
           </div>
         </div>
       )}
-      <Chat/>
       <Footer/>
     </div>
   );
