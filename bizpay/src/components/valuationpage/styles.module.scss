@@ -1,0 +1,1059 @@
+.container {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    padding-top: 70px;
+    box-sizing: border-box;
+  }
+  
+  .body {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    // background-color: rgb(0, 0, 0);
+    background: -webkit-linear-gradient(-45deg, #FC466B 20%, #3F5EFB 100%);
+    background: linear-gradient(135deg, #FC466B 20%, #3F5EFB 100%);
+    padding-bottom: 50px;
+  }
+  
+  .main {
+    max-width: 1200px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 26px;
+    background: transparent;
+    // background-color: rgb(0, 0, 0);
+  }
+  
+  .textContainer {
+    // display: flex;
+    text-align: center;
+  }
+  
+  .mainLeft {
+    flex: 1;
+  }
+  
+  .card {
+    flex: 1;
+    // background-color: rgb(0, 0, 0);
+    border-radius: 22px;
+    overflow: hidden;
+    // box-shadow: 0px 20.5814px 82.3256px #353536;
+  }
+  
+  .title {
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 60px;
+    letter-spacing: -0.2px;
+    color: #121223;
+  }
+  
+  .subtitle {
+    margin-top: 18px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    color: #fff;
+  }
+  
+  .bodyText {
+    margin-top: 10px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 40px;
+  }
+  
+  .toggle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .exploreButton {
+    margin-left: 10px;
+    width: 168px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: -0.2px;
+    color: #1969ff;
+    border: none;
+    box-shadow: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 24px;
+    background-color: #fff;
+    border: 1px solid #1969ff;
+  
+    &:hover {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+  }
+  
+  .cardMedia {
+    position: relative;
+  
+    .player {
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 580px !important;
+    }
+  }
+  
+  .cardInfo {
+    padding: 6px 30px 24px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .cardCategory {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.01em;
+    color: #a2a2ad;
+  }
+  
+  .cardName {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.02em;
+    color: #fcfcfc;
+    margin-top: 4px;
+  }
+  
+  .about {
+    width: 100%;
+    // background: linear-gradient(180deg, #ffffff 0%, rgba(234, 234, 241, 0) 100%);
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .aboutInner {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+  }
+  
+  .aboutTitle {
+    margin-top: 136px;
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 71px;
+    letter-spacing: -1.2px;
+    color: #121223;
+    text-align: center;
+  }
+  
+  .aboutCards {
+    margin-top: 96px;
+    padding-bottom: 80px;
+    display: flex;
+  }
+  
+  .aboutCard {
+    flex: 1;
+    margin-right: 22px;
+    padding: 33px 20px;
+    box-sizing: border-box;
+    border-radius: 27px;
+    background-color: #fff;
+    box-shadow: 0px 18.6388px 74.5551px #f2f1fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  
+  .aboutCardLink {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cardIconWrapper {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    box-shadow: 0px 22.9412px 91.7647px #f2f1fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    img {
+      width: 82px;
+      height: 82px;
+    }
+  }
+  
+  .cardTitle {
+    margin-top: 40px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.25px;
+    color: #121223;
+    text-align: center;
+  }
+  
+  .cardDesc {
+    margin-top: 12px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.25px;
+    color: #a2a2ad;
+    text-align: center;
+  }
+  
+  .categories {
+    margin-top: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .categoryCard {
+    flex: 0 0 calc(33.33% - 26.66px);
+    margin-right: 40px;
+    margin-bottom: 32px;
+    padding: 37px 24px 24px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0px 22.9412px 91.7647px #f2f1fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  
+    &:nth-child(3n),
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  
+  .cardIconWrapper2 {
+    width: 129px;
+    height: 129px;
+    border-radius: 50%;
+    box-shadow: 0px 22.9412px 91.7647px #f2f1fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    img {
+      width: 66px;
+      height: 66px;
+    }
+  }
+  
+  .cardLabelWrapper {
+    margin-top: 66px;
+    width: 100%;
+    height: 64px;
+    border-radius: 33px;
+    background: #f6f7f9;
+    padding: 18px 10px 18px 26px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    &.extraCard {
+      background-color: #1969ff;
+  
+      .cardLabel {
+        color: #fff;
+      }
+  
+      .browseBtn {
+        background-color: #fff;
+      }
+  
+      .browseBtnIcon {
+        color: #1969ff;
+      }
+    }
+  }
+  
+  .cardLabel {
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.31px;
+    color: #121223;
+  }
+  
+  .browseBtn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #1969ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .browseBtnIcon {
+    color: #fff;
+  }
+  
+  .footer {
+    width: 100%;
+    height: 144px;
+    padding: 0 80px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1969ff;
+  }
+  
+  .logo {
+    height: 100px;
+  }
+  
+  .chatCard {
+    margin: auto;
+    width: 500px;
+    height: 300px;
+    padding: 1rem;
+    margin-top: 35px;
+  
+    .chatHeader {
+      height: 15%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .chatContainer {
+      height: 60%;
+      overflow-y: auto;
+      padding: 1rem;
+      background-color: #f1f1f1;
+    }
+  
+    .chatFooter {
+      height: 20%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+  
+    .chatFooterInput {
+      border: none;
+      width: 85%;
+      padding: 5px 10px;
+    }
+  
+    .chatFooterButton {
+      width: 98px;
+      height: 38px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 18px;
+      background-color: #007bff;
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #fff;
+      border: none;
+      margin: auto;
+    }
+  
+    .chat {
+      text-align: center;
+      width: 15%;
+    }
+  
+    .formInput {
+      width: 100%;
+      outline: none;
+      height: 50px;
+      border-radius: 10px;
+      border: 1px solid #EAEAF1;
+      padding: 8px 16px;
+      box-sizing: border-box;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+  
+    .button {
+      width: 168px;
+      height: 48px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 18px;
+      background-color: #007bff;
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #fff;
+      border: none;
+      margin: auto;
+    }
+  }
+  
+  .valuationListContainer {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+  
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  
+    .title {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+  }
+  
+  .faqs {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: auto;
+    margin-top: 20px;
+    width: 70%;
+  
+    .question {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+  
+  .valuationSection {
+    width: 70%;
+    margin: auto;
+    margin-bottom: 1.5rem;
+    .valuationSectionHeading {
+      color: #fff;
+    }
+  
+    .valuationToolsContainer {
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 0.25rem;
+      background-color: #F6F9FA;
+  
+      .m2 {
+        margin: 0.5rem;
+  
+        .tabs {
+          display: flex;
+          gap: 0.5rem;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding-bottom: 0;
+          margin-bottom: 0;
+  
+          .tab {
+            text-decoration: none;
+            border: 1px solid darkgray;
+            border-bottom: none;
+            border-radius: 0.25rem 0.25rem 0 0;
+            padding: 0.25rem;
+            color: #000;
+  
+            &.active {
+              background-color: #0058FF;
+              color: white;
+            }
+          }
+        }
+  
+        form {
+          margin-top: 0;
+          display: flex;
+          flex-direction: row;
+          gap: 1rem;
+          .inputContainer {
+            border-radius: 0 0.25rem 0.25rem 0.25rem;
+            width: 100%;
+  
+            input {
+              border: none;
+              border-radius: 0.25rem;
+              width: 100%;
+              padding: 1rem;
+              box-sizing: border-box;
+            }
+          }
+  
+          .sellSubmitContainer {
+            button {
+              min-width: 141px;
+              padding: 1rem;
+              box-sizing: content-box;
+              border: none;
+              background: #005bff;
+              color: white;
+              border-radius: 0.25rem;
+              cursor: pointer;
+  
+              &:hover {
+                background: #004BD9;
+              }
+  
+              &:disabled {
+                opacity: 0.7;
+                cursor: not-allowed;
+  
+                &:hover {
+                  background: #005bff;
+                }
+              }
+            }
+          }
+        }
+  
+        .sellInputSubLabel {
+          margin-top: 0.5rem;
+          text-align: left;
+          font-size: small;
+          color: #6c757d;
+        }
+  
+        .comingSoon {
+          text-align: center;
+          min-height: 2.9rem;
+          padding: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid darkgray;
+          border-radius: 0 0.25rem 0.25rem 0.25rem;
+        }
+      }
+    }
+  
+    .valuationFeatureContainer {
+      display: none;
+      margin-top: 0.75rem;
+  
+      .valuationFeatureList {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        color: white;
+  
+        .valuationFeature {
+          display: flex;
+          gap: 0.25rem;
+        }
+      }
+    }
+  }
+  
+  .assetWorth {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: auto;
+    margin-top: 20px;
+    width: 70%;
+  
+    .assetCard {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+  
+      .leftContainer {
+        width: calc(70% - 1rem);
+  
+        .package {
+          width: 150px;
+          border: 1px solid rgba(0, 0, 0, 0.87);
+          font-size: 1.2rem;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+      }
+  
+      .rightContainer {
+        width: 30%;
+  
+  
+  
+        .contact {
+          cursor: pointer;
+          width: 138px;
+          height: 28px;
+          margin: auto;
+          padding: 5px;
+          color: #000;
+          text-decoration: none;
+          border: 3px solid rgba(0, 0, 0, 0.87);
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+  
+          .arrow {
+            padding-left: 5px;
+            border-left: 3px solid rgba(0, 0, 0, 0.87);
+          }
+        }
+      }
+    }
+  }
+  
+  .bannerText {
+    text-align: center;
+    width: 60%;
+    margin: auto;
+    margin-top: 25px;
+  }
+  
+  @media only screen and (max-width: 1024px) {
+    .valuationSection {
+      width: 100%;
+      .valuationToolsContainer {
+        .m2 {
+          .tabs {
+            flex-wrap: nowrap;
+          }
+        }
+      }
+  
+    }
+    .assetWorth {
+  
+      .assetCard {
+        flex-direction: column;
+  
+        .leftContainer {
+          width: 100%;
+        }
+  
+        .rightContainer {
+          width: 100%;
+          margin-top: 10px;
+        }
+      }
+  
+    }
+  
+    .exploreButton {
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
+  
+    .cardTitle {
+      font-size: 18px;
+    }
+  
+    .cardDesc {
+      margin-top: 10px;
+      font-size: 12px;
+    }
+  
+    .cardIconWrapper {
+      width: 94px;
+      height: 94px;
+  
+      img {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  
+    .cardIconWrapper2 {
+      width: 108px;
+      height: 108px;
+  
+      img {
+        width: 56px;
+        height: 56px;
+      }
+    }
+  
+    .cardLabelWrapper {
+      margin-top: 56px;
+      height: 54px;
+    }
+  
+    .cardLabel {
+      font-size: 18px;
+    }
+  
+    .browseBtn {
+      width: 40px;
+      height: 40px;
+    }
+  
+    .footer {
+      height: 128px;
+      padding: 0 32px;
+    }
+  }
+  
+  @media only screen and (max-width: 900px) {
+    .aboutCards {
+      flex-wrap: wrap;
+      padding-bottom: 58px;
+    }
+  
+    .aboutCard {
+      flex: 0 0 calc(50% - 11px);
+      margin-bottom: 22px;
+  
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+  
+    .categoryCard {
+      flex: 0 0 calc(50% - 11px);
+      margin-right: 22px;
+  
+      &:nth-child(3n) {
+        margin-right: 22px;
+      }
+  
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+  
+    .main {
+      flex-direction: column-reverse;
+      margin-bottom: 40px;
+    }
+  
+    .card {
+      width: 100%;
+      max-width: 400px;
+    }
+  
+    .mainLeft {
+      margin-top: 32px;
+      margin-right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .valuationListContainer {
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .title {
+      text-align: center;
+    }
+  
+    .chatCard {
+      width: 90%;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .title {
+      font-size: 48px;
+      line-height: 50px;
+    }
+  
+    .subtitle {
+      font-size: 16px;
+      line-height: 17px;
+      text-align: center;
+      font-weight: bold;
+    }
+  
+    .bodyText {
+      font-size: 14px;
+      line-height: 17px;
+      text-align: center;
+    }
+  
+    .exploreButton {
+      width: 168px;
+      height: 48px;
+      font-size: 16px;
+    }
+  
+    .aboutTitle {
+      margin-top: 72px;
+      font-size: 48px;
+      line-height: 58px;
+    }
+  
+    .faqs {
+      width: 100%;
+    }
+  
+    .aboutCards {
+      margin-top: 52px;
+      flex-direction: column;
+    }
+  
+    .aboutCard {
+      flex: 0 0 100%;
+      margin-right: 0;
+    }
+  
+    .categoryCard {
+      flex-basis: 100%;
+      margin-right: 0 !important;
+    }
+  
+    .footer {
+      margin-top: 0;
+    }
+  }
+  
+  .webMessenger {
+    text-align: left;
+    min-height: 2.9rem;
+    border: 1px solid darkgray;
+    border-radius: 0 0.25rem 0.25rem 0.25rem;
+  
+    .webMessengerHeader {
+      background-color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      .title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+      }
+  
+      .button {
+        display: flex;
+        gap: 14px;
+  
+        .refresh {
+          cursor: pointer;
+        }
+  
+        .close {
+          cursor: pointer;
+        }
+      }
+    }
+  
+    .webMessengerMessages {
+      background-color: #f9f9fb;
+      max-height: 300px;
+      padding: 10px 20px;
+      overflow-y: auto;
+  
+      ul.messages {
+        margin: 0;
+        padding: 0;
+  
+        li.bot {
+          display: block;
+          margin: 20px 0 0;
+  
+          .timestamp {
+            text-align: left;
+            margin-left: 46px;
+            font-size: 0.75rem;
+            color: gray;
+          }
+  
+          .choices {
+            display: flex;
+            justify-content: center;
+            flex-flow: row wrap;
+  
+            .choice {
+              border-color: rgb(31, 51, 73);
+              color: rgb(31, 51, 73);
+              border: solid 1px;
+              cursor: pointer;
+              display: inline-block;
+              padding: 7px;
+              margin: 12px 5px;
+              border-radius: 20px;
+            }
+          }
+  
+          .main {
+            margin-right: 30px;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+  
+            .icon {
+              width: 28px;
+              height: 28px;
+              border-radius: 100%;
+              margin-right: 10px;
+              -webkit-flex-shrink: 0;
+              flex-shrink: 0;
+            }
+  
+            .bubble {
+              color: rgb(45, 51, 57);
+              background-color: white;
+              box-shadow: -1px 2px 30px rgb(17 54 84 / 3%);
+              display: inline-block;
+              padding: 10px 14px;
+              border-radius: 20px;
+            }
+          }
+        }
+  
+        li.user {
+          display: block;
+  
+          .timestamp {
+            text-align: right;
+            font-size: 0.75rem;
+            color: gray;
+          }
+  
+          .main {
+            margin-left: 75px;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+  
+            
+  
+            .icon {
+              width: 28px;
+              height: 28px;
+              border-radius: 100%;
+              margin-right: 10px;
+              -webkit-flex-shrink: 0;
+              flex-shrink: 0;
+            }
+  
+            .bubble {
+              background-color: rgb(31, 51, 73);
+              margin-left: auto;
+              margin-right: 0;
+              color: rgb(255, 255, 255);
+              box-shadow: -1px 2px 30px rgb(17 54 84 / 3%);
+              display: inline-block;
+              padding: 10px 14px;
+              border-radius: 20px;
+  
+              .loading {
+                width: 15px;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                animation: loader 1s infinite linear alternate;
+              }
+              
+            }
+          }
+        }
+      }
+    }
+  
+    @media only screen and (max-width: 1024px) {
+  
+      .webMessengerMessages {
+        ul.messages {
+  
+          li.user {
+            .main {
+              margin-left: 35px;
+            }
+          }
+        }
+      }    
+    }
+    .webMessengerFooter {
+      background-color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      .textField {
+        border: none;
+        padding: 1rem 0.5rem;
+        width: 100%;
+      }
+  
+      .textField:focus-visible {
+        outline: none;
+      }
+  
+      .button {
+        display: none;
+        // display: flex;
+        gap: 14px;
+  
+        .attachment {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  
+  
+  @keyframes loader {
+    0% {
+      box-shadow: 20px 0 #000, -20px 0 #0002;
+      background: #000
+    }
+  
+    33% {
+      box-shadow: 20px 0 #000, -20px 0 #0002;
+      background: #0002
+    }
+  
+    66% {
+      box-shadow: 20px 0 #0002, -20px 0 #000;
+      background: #0002
+    }
+  
+    100% {
+      box-shadow: 20px 0 #0002, -20px 0 #000;
+      background: #000
+    }
+  }

@@ -50,7 +50,7 @@ const Drawer = ({ open, setOpen }) => {
             <CustomWallet/>
           </li>
           <li className="mt-6">
-            <Link href="#Audit">
+            <Link href="/get-a-valuation">
               <span onClick={closeDrawer} className="cursor-pointer text-white">
                 Get a Valuation
               </span>

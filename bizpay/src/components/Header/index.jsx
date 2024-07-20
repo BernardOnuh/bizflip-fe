@@ -44,7 +44,7 @@ export default function Header() {
             <div className="hidden w-full md:block md:w-auto my-auto" id="navbar-default">
               <ul className="flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row space-x-8 lg:space-x-11 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent items-center">
                 <li>
-                  <Link href="#Presale" passHref>
+                  <Link href="/get-a-valuation" passHref>
                     <div className="block py-2 px-3 text-white  rounded md:bg-transparent md:p-0 cursor-pointer font-roboto font-semibold text-lg" aria-current="page">
                       Get a Valuation
                     </div>
