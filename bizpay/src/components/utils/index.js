@@ -27,12 +27,17 @@ export function shortenAddress(address, chars = 4) {
   return `${parsed.substring(0, chars + 2)}...${parsed.substring(42 - chars)}`;
 }
 
-export const getHigherGWEI = async () => {
+export const useHigherGWEI = () => {
   const provider = useProvider();
-  const gasPrice = await provider.request({ method: 'eth_gasPrice' });
-  const higherGasPrice = parseUnits(formatUnits(gasPrice, 'wei')) * 2;
 
-  return higherGasPrice;
+  const getHigherGWEI = async () => {
+    const gasPrice = await provider.request({ method: 'eth_gasPrice' });
+    const higherGasPrice = parseUnits(formatUnits(gasPrice, 'wei')) * 2;
+
+    return higherGasPrice;
+  };
+
+  return getHigherGWEI;
 };
 
 export const getRandomIPFS = (tokenURI, justURL = false) => {

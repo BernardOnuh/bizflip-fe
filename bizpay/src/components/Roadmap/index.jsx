@@ -11,7 +11,6 @@ const RoadmapPage = () => {
 
   return (
     <div className={styles.container}>
-      <Header />
       <div className={styles.body}>
         <div className={styles.main}>
           <Image src={roadmap} alt="Roadmap" className={styles.roadmap} />
