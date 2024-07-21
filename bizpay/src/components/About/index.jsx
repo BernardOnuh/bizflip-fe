@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import Header from 'components/header';
 import Footer from '../Footer/footer';
 import LearnMore from './LearnMore';
 
@@ -12,7 +11,6 @@ const AboutPage = () => {
 
   return (
     <div className={styles.container}>
-      <Header />
       <div className={styles.body}>
         <div>
           <LearnMore />

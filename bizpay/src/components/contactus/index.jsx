@@ -83,6 +83,7 @@ const ContactUsPage = () => {
               method="POST"
               target="_blank"
               id="contactus"
+              className={styles.form}
             >
               <div className="mb-3 pt-0">
                 <input
