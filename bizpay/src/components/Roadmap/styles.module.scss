@@ -1,18 +1,10 @@
-@font-face {
-	font-family: 'adele';
-	src: 
-		local('adele Font'),
-		local('adele-Font'),
-		url('fonts/script.otf') 
-		format('opentype');
-}
 
 .container {
   position: absolute;
   width: 100%;
   height: 100vh;
   top: 0;
-  padding-top: 80px;
+  padding-top: 70px;
   box-sizing: border-box;
   height: 100vh;
 }
