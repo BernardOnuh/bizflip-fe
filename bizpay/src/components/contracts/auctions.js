@@ -1,4 +1,4 @@
-import { useContract, useSigner, useProvider } from 'wagmi';
+import { useSigner, useProvider } from 'wagmi';
 import { prepareWriteContract, writeContract, readContract, fetchSigner } from 'viem';
 import { AUCTION_CONTRACT_ABI } from './abi';
 

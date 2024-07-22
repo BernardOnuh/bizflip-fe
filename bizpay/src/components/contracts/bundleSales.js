@@ -1,4 +1,3 @@
-import { useContract } from 'wagmi'; // Import from wagmi
 import { useContract as useViemContract } from 'viem'; // Import from viem
 
 import { calculateGasMargin, getHigherGWEI } from '../utils';
