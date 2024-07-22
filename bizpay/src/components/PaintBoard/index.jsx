@@ -14,6 +14,7 @@ import BootstrapTooltip from '../BootstrapTooltip';
 import PriceInput from '../PriceInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import CloseIcon from '@mui/icons-material/Close';
 
 // Other necessary imports
 
