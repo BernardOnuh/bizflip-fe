@@ -70,9 +70,14 @@
   padding: 8px 16px;
   box-sizing: border-box;
   font-size: 16px;
-  width: 400px;
+  width: 100%; // Changed from 400px
+  max-width: 400px; // Added
   margin: auto;
   margin-bottom: 20px;
+}
+
+.longInput {
+  height: 100px; // Added for textarea
 }
 
 .button {
@@ -89,4 +94,25 @@
   cursor: pointer;
   color: #fff;
   border: none;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .formInput {
+    font-size: 14px;
+  }
+
+  .button {
+    width: 100%;
+    font-size: 16px;
+  }
 }
