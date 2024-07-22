@@ -1,4 +1,4 @@
-import { useAccount, useContract } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { BigNumber } from 'viem';
 import { calculateGasMargin, getHigherGWEI } from '../utils';
 import { Contracts } from '../constants/networks';
@@ -15,12 +15,7 @@ export const useSalesContract = () => {
   const CHAIN_ID = chain?.id === CHAIN_ID_MAINNET ? CHAIN_ID_MAINNET : CHAIN_ID_GÖRLI;
 
   // Hook to get a contract instance
-  const getSalesContract = () => {
-    return useContract({
-      addressOrName: Contracts[CHAIN_ID]?.sales,
-      contractInterface: SALES_CONTRACT_ABI,
-    });
-  };
+
 
   const buyItemETH = async (nftAddress, tokenId, owner, value, from) => {
     const contract = getSalesContract();
