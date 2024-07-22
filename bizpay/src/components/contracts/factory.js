@@ -1,4 +1,4 @@
-import { useContract, useAccount, useProvider, useNetwork } from 'wagmi';
+import {  useAccount, useProvider, useNetwork } from 'wagmi';
 import { calculateGasMargin, getHigherGWEI } from '../utils';
 import { Contracts } from '../constants/networks';
 import { FACTORY_ABI } from './abi';
@@ -11,13 +11,6 @@ export const useFactoryContract = () => {
   // Define the chain ID based on wagmi's current chain
   const CHAIN_ID = chain?.id;
 
-  const getContract = (address) => {
-    return useContract({
-      addressOrName: address,
-      contractInterface: FACTORY_ABI,
-      signerOrProvider: provider,
-    });
-  };
 
   const getFactoryContract = () =>
     getContract(Contracts[CHAIN_ID]?.factory);
