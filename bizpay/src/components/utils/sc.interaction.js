@@ -1,28 +1,34 @@
 import { useCallback } from 'react';
-import { useWeb3React } from '@web3-react/core';
-import { ethers } from 'ethers';
+import { useSigner } from 'wagmi';
+import { createContract } from 'viem';
 
 const useContract = () => {
-  const { chainId } = useWeb3React();
+  const { data: signer } = useSigner();
 
-  const loadContract = useCallback(
-    async (address, abi) => {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      return new ethers.Contract(address, abi, signer);
-    },
-    [chainId]
-  );
+  // Function to load a contract using viem
+  const loadContract = useCallback(async (address, abi) => {
+    if (!signer) {
+      throw new Error('Signer not available');
+    }
+    const contract = createContract({
+      address,
+      abi,
+      signerOrProvider: signer,
+    });
+    return contract;
+  }, [signer]);
 
-  const getAccountBalance = useCallback(
-    async address => {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      let balance = await provider.getBalance(address);
-      balance = ethers.utils.formatEther(balance);
-      return balance;
-    },
-    [chainId]
-  );
+  // Function to get the account balance
+  const getAccountBalance = useCallback(async (address) => {
+    if (!signer) return '0'; // Adjust this if you need to use a different approach for balance
+    try {
+      const balance = await signer.getBalance(address);
+      return balance.toString(); // Format or process the balance as needed
+    } catch (error) {
+      console.error('Error fetching account balance:', error);
+      return '0'; // Return a default value or handle the error as appropriate
+    }
+  }, [signer]);
 
   return { loadContract, getAccountBalance };
 };

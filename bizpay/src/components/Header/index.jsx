@@ -51,14 +51,14 @@ export default function Header() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#Community" passHref>
+                  <Link href="/sell" passHref>
                     <div className="block py-2 px-3 text-white font-roboto font-semibold text-lg rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 cursor-pointer">
                       Sell Now
                     </div>
                   </Link>
                 </li>
                 <li>
-                  <Link href="#Audit" passHref>
+                  <Link href="#" passHref>
                     <div className="block py-2 px-3 text-white font-roboto font-semibold text-lg rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 cursor-pointer">
                       <ul className="inline-flex items-center">
                         <li>Resources</li>

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import { Card } from '@mui/material';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
-import Link from 'next/link'
+import Link from 'next/link';
 import Footer from '../Footer/footer';
 import FreeValuation from './freeValuation';
 import styles from './styles.module.scss';

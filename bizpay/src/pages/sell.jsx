@@ -1,15 +1,14 @@
 import Image from "next/image";
-import ValuationPage from "@/components/valuationpage";
 import Chat from '../components/Footer/Chatbox/chat'
 import Header from "@/components/Header";
+import PaintBoard from "@/components/PaintBoard";
 
 
-
-export default function valuation() {
+export default function sell() {
   return (
     <div className="">
       <Header/>
-     <ValuationPage/>
+     <PaintBoard/>
      <Chat/>
     </div>
   );

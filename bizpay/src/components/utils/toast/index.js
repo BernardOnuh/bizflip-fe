@@ -1,10 +1,10 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 
-import iconInfo from 'assets/svgs/info.svg';
-import iconSuccess from 'assets/svgs/success.svg';
-import iconError from 'assets/svgs/error.svg';
-import iconWarning from 'assets/svgs/warning.svg';
+import iconInfo from '../../../../public/images/svgs/info.svg';
+import iconSuccess from '../../../../public/images/svgs/success.svg';
+import iconError from '../../../../public/images/svgs/error.svg';
+import iconWarning from '../../../../public/images/svgs/warning.svg';
 
 import styles from './styles.module.scss';
 

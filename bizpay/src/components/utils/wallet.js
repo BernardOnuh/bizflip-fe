@@ -1,13 +1,20 @@
-import { ethers } from 'ethers';
+import { useProvider } from 'wagmi';
+import { providers } from 'viem';
 
-const checkBalance = async address => {
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  let balance = await provider.getBalance(address);
-  balance = ethers.utils.formatEther(balance);
-  return balance;
-};
-const WalletUtils = {
-  checkBalance,
+const useWalletUtils = () => {
+  const provider = useProvider();
+
+  const checkBalance = async (address) => {
+    if (!provider) {
+      throw new Error('Provider not found');
+    }
+    const balance = await provider.getBalance(address);
+    return balance.toString(); // Convert balance to string if needed
+  };
+
+  return {
+    checkBalance,
+  };
 };
 
-export default WalletUtils;
+export default useWalletUtils;

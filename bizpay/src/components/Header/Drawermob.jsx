@@ -57,12 +57,12 @@ const Drawer = ({ open, setOpen }) => {
             </Link>
           </li>
           <li className="mt-6">
-            <span
-              onClick={() => handleExternalLink('https://drive.google.com/file/d/16e3M-ORNDLKlRyAVl30xZU-QTGkHKhXA/view')}
-              className="cursor-pointer text-white"
+            <Link href="/sell">
+            <span className="cursor-pointer text-white"
             >
               Sell Now
             </span>
+            </Link>
           </li>
           <li className="mt-6">
             <Link href="#Community">
