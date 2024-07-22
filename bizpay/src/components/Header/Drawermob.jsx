@@ -65,14 +65,14 @@ const Drawer = ({ open, setOpen }) => {
             </Link>
           </li>
           <li className="mt-6">
-            <Link href="#Community">
+            <Link href="/bizflip-broker">
               <span onClick={closeDrawer} className="cursor-pointer text-white">
                 Bizflip Broker
               </span>
             </Link>
           </li>
           <li className="mt-6">
-            <Link href="#Community">
+            <Link href="/roadmap">
               <span onClick={closeDrawer} className="cursor-pointer text-white">
                 Road Map
               </span>

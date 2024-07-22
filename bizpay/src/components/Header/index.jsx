@@ -58,10 +58,19 @@ export default function Header() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" passHref>
+                  <Link href="/bizflip-broker" passHref>
                     <div className="block py-2 px-3 text-white font-roboto font-semibold text-lg rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 cursor-pointer">
                       <ul className="inline-flex items-center">
-                        <li>Resources</li>
+                        <li>Bizflip Broker</li>
+                      </ul>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                  <Link href="/roadmap" passHref>
+                    <div className="block py-2 px-3 text-white font-roboto font-semibold text-lg rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 cursor-pointer">
+                      <ul className="inline-flex items-center">
+                        <li>RoadMap</li>
                       </ul>
                   </div>
                 </Link>
