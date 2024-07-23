@@ -1,40 +1,30 @@
-import { Modal } from '@mui/material';
-import React from 'react';
-import styles from './styles.module.scss';
-// import CloseIcon from '@mui/icons-material/Close';
+import React from 'react'
+import TinderCard from 'react-tinder-card'
 
-const OfferModal = ({ setModal, close, makeAnOffer }) => {
+const SwipeCard = ({ name, url }) => {
+  const swiped = (direction, nameToDelete) => {
+    console.log('removing: ' + nameToDelete)
+  }
+
+  const outOfFrame = (name) => {
+    console.log(name + ' left the screen!')
+  }
+
   return (
-    <Modal
-      keepMounted
-      open={setModal}
-      onClose={close}
-      aria-labelledby="keep-mounted-modal-title"
-      aria-describedby="keep-mounted-modal-description"
+    <TinderCard
+      className="swipe"
+      key={name}
+      onSwipe={(dir) => swiped(dir, name)}
+      onCardLeftScreen={() => outOfFrame(name)}
     >
-      <main>
-        <div className={styles.main_modal}>
-          <div className={styles.buttons}>
-            <div className={styles.buttons__secondary_bg}>
-              <div
-                className={styles.buttons__secondary}
-                onClick={() => {
-                  close();
-                }}
-              >
-                <div className={styles.buttons__text}>Later</div>
-              </div>
-            </div>
-            <div className={styles.buttons__primary_bg}>
-              <div onClick={makeAnOffer} className={styles.buttons__primary}>
-                <div className={styles.buttons__text}>Make an Offer</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </Modal>
-  );
-};
+      <div
+        style={{ backgroundImage: 'url(' + url + ')' }}
+        className="card bg-cover bg-center"
+      >
+        <h3 className="text-white text-2xl">{name}</h3>
+      </div>
+    </TinderCard>
+  )
+}
 
-export default OfferModal;
+export default SwipeCard
