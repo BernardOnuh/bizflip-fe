@@ -1,0 +1,145 @@
+.container {
+    position: absolute;
+    width: 100%;
+    padding-top: 80px;
+    box-sizing: border-box;
+  }
+  
+  .body {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 80px);
+    background: -webkit-linear-gradient(-45deg, #fc466b 20%, #3f5efb 100%);
+    background: linear-gradient(135deg, #fc466b 20%, #3f5efb 100%);
+    // background: rgb(241, 241, 241);
+    padding-bottom: 50px;
+    max-width: 100%;
+    overflow: hidden;
+    margin-top: -82px;
+  }
+  
+  .subscriptioncard {
+    width: inherit;
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  .card {
+    width: fit-content;
+    // background-image: radial-gradient(circle,
+    //     #fc5c7d,
+    //     #f359a2,
+    //     #db62c6,
+    //     #b072e6,
+    //     #6a82fb);
+    // box-shadow: 10px 5px 10000px rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 5px solid rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(80px);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  
+  .subscription_title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    div {
+      span {
+        color: white;
+        letter-spacing: 5px;
+      }
+    }
+  
+    .sub_title {
+      font-size: medium;
+      text-align: center;
+      color: rgb(255, 255, 255, 0.5);
+      letter-spacing: 2px;
+    }
+  }
+  
+  .subscription_details {
+    margin-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: space-between;
+  }
+  
+  .continue_btn {
+    margin-top: 50px;
+    width: 50%;
+    button {
+      background: white;
+      color: black;
+      padding: 5px 30px 5px 30px;
+      border-radius: 35px;
+      // border-color: white;
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+    }
+  }
+  
+  // Media-queary
+  
+  @media only screen and (max-device-width: 560px) {
+    .subscriptioncard {
+      margin-top: 280px;
+      margin-bottom: 50px;
+  
+      .card {
+        border: none;
+        backdrop-filter: none;
+      }
+  
+      .subscription_title {
+        div {
+          font-size: 26px;
+        }
+      }
+  
+      .subscription_details {
+        flex-direction: column;
+        gap: 20px;
+      }
+  
+      .continue_btn {
+        width: auto;
+      }
+    }
+  }
+  
+  @media only screen and (min-device-width: 561px) and (max-device-width: 768px) {
+    .subscriptioncard {
+      padding: 10px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+  
+    .subscription_details {
+      gap: 20px;
+    }
+  }
+  

@@ -1,0 +1,301 @@
+.container {
+    position: absolute;
+    width: 100%;
+    padding-top: 80px;
+    box-sizing: border-box;
+  }
+  
+  .body {
+    margin-left: auto;
+    margin-right: auto;
+    // display: flex;
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 80px);
+    // background-color: rgb(0, 0, 0);
+    background: -webkit-linear-gradient(-45deg, #fc466b 20%, #3f5efb 100%);
+    background: linear-gradient(135deg, #fc466b 20%, #3f5efb 100%);
+    padding-bottom: 50px;
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .tinderCards {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    min-height: 60vh;
+  }
+  
+  .swipe {
+    position: absolute;
+  }
+  
+  .reletive {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .swipeButtons {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .swipeButtons_repeat {
+    background-color: white !important;
+    padding: 1vw !important;
+    color: #f56748 !important;
+    border-radius: 50% !important;
+  }
+  
+  .swipeButtons_left {
+    background-color: white !important;
+    padding: 1vw !important;
+    color: #ec5e6f !important;
+    border-radius: 50% !important;
+  }
+  
+  .swipeButtons_star {
+    background-color: white !important;
+    padding: 1vw !important;
+    color: #62b4f9 !important;
+    border-radius: 50% !important;
+  }
+  
+  .swipeButtons_right {
+    background-color: white !important;
+    padding: 1vw !important;
+    color: #76e2b3 !important;
+    border-radius: 50% !important;
+  }
+  
+  .swipeButtons_lightning {
+    background-color: white !important;
+    padding: 1vw !important;
+    color: #915dd1 !important;
+    border-radius: 50% !important;
+  }
+  
+  .bg_liner {
+    height: 150px !important;
+    padding: 0px !important;
+    align-items: baseline !important;
+  }
+  
+  .bg_process_background {
+    background-image: linear-gradient(135deg, #3f5efb 50%, #fc466b 100%);
+  }
+  
+  .mx_auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .main {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 26px;
+    background: transparent;
+    // background-color: rgb(0, 0, 0);
+  }
+  
+  .textContainer {
+    text-align: center;
+  }
+  
+  .formInput {
+    width: 300px;
+    outline: none;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #eaeaf1;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+  .bodyText {
+    margin-top: 10px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 40px;
+  }
+  
+  .mainLeft {
+    flex: 1;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .bg_transpernt {
+    background: transparent !important;
+  }
+  
+  .margin-top-5 {
+    margin-top: 52px !important;
+  }
+  
+  // // @media only screen and (min-device-width: 769px) {
+  //   .swipe_button{
+  //     display: none;
+  //   }
+  // // }
+  
+  .swipe_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: #000;
+    cursor: pointer;
+    // background-color: rebeccapurple;
+    width: max-content;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .tinderCards {
+      margin-top: 140px;
+    }
+    .main {
+      flex-direction: column-reverse;
+      margin-bottom: 40px;
+    }
+  
+    .mainLeft {
+      margin-top: 32px;
+      margin-right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .bodyText {
+      font-size: 14px;
+      line-height: 17px;
+      text-align: center;
+    }
+  }
+  
+  @media only screen and (max-width: 320px) {
+    .card {
+      h1 {
+        font-size: 14px;
+      }
+    }
+  }
+  
+  .card {
+    // position: relative;
+    background-color: #fff;
+    width: 300px;
+    padding: 20px;
+    max-width: 75vw;
+    height: 50vh;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.02);
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+  
+    .like {
+      display: none;
+      &::before {
+        content: 'Like';
+        font-size: 24px;
+        font-weight: 700;
+        background-color: #76e2b3;
+        padding: 3px 10px 3px 10px;
+        border-radius: 10px;
+      }
+      transform: rotate(-45deg);
+      position: absolute;
+    }
+    .nope {
+      display: none;
+      &::before {
+        content: 'Nope';
+        text-transform: capitalize;
+        font-size: 24px;
+        font-weight: 700;
+        background-color: #ec5e6f;
+        padding: 3px 10px 3px 10px;
+        border-radius: 10px;
+      }
+      transform: rotate(45deg);
+      position: absolute;
+      top: 30px;
+      right: 10px;
+    }
+  }
+  
+  .cardContent {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card h1 {
+    position: absolute;
+    bottom: 0;
+    margin: 10px;
+    color: #fff;
+  }
+  
+  .hintFlipCard {
+    animation: card 2s forwards 0.2s 1;
+  }
+  
+  @keyframes card {
+    0% {
+      transform: rotateY(0deg);
+    }
+    50% {
+      transform: rotateY(45deg);
+    }
+    100% {
+      transform: rotateY(0deg);
+    }
+  }
+  
+  .back_card {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    font-weight: 700;
+    line-height: 2rem;
+  
+    .back_name {
+      width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      // transition: all 2s;
+  
+      &:hover {
+        overflow: auto;
+        white-space: normal;
+        width: 310px;
+      }
+    }
+  }
+  
