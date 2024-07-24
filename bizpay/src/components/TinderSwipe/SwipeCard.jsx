@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TinderCard from 'react-tinder-card';
 import styles from './styles.module.scss';
 
-const SwipeCard = ({ name, url }) => {
+const SwipeCard = ({ name, url, age, description }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleCardClick = () => {
+    setIsFlipped(!isFlipped);
+  };
+
   const swiped = (direction, nameToDelete) => {
     console.log('removing: ' + nameToDelete);
   };
@@ -20,10 +26,17 @@ const SwipeCard = ({ name, url }) => {
       preventSwipe={['up', 'down']}
     >
       <div
-        style={{ backgroundImage: 'url(' + url + ')' }}
-        className={`${styles.card} ${styles.bg_cover} ${styles.bg_center}`}
+        className={`${styles.card} ${styles.bg_cover} ${styles.bg_center} ${isFlipped ? styles.flipped : ''}`}
+        onClick={handleCardClick}
       >
-        <h3>{name}</h3>
+        <div className={styles.cardFront} style={{ backgroundImage: 'url(' + url + ')' }}>
+          <h3>{name}</h3>
+        </div>
+        <div className={styles.cardBack}>
+          <h3>{name}</h3>
+          <p>Age: {age}</p>
+          <p>{description}</p>
+        </div>
       </div>
     </TinderCard>
   );
