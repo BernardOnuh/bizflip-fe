@@ -21,7 +21,7 @@ const SwipeCard = ({ name, url }) => {
     >
       <div
         style={{ backgroundImage: 'url(' + url + ')' }}
-        className={`${styles.card} ${styles.bg_cover} ${styles}`}
+        className={`${styles.card} ${styles.bg_cover} ${styles.bg_center}`}
       >
         <h3>{name}</h3>
       </div>
