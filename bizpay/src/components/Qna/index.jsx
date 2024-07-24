@@ -70,12 +70,12 @@ const QnA = () => {
       if (activeStepProcess === 2) {
         router.push({
           pathname: '/nft-swipe',
-          query: {
+          /*query: {
             _types: answer1.map((item) => item.value).join(','),
             _min: min,
             _max: max,
             _res: answer3,
-          },
+          },*/
         });
         return;
       }
