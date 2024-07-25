@@ -9,6 +9,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import OfferModal from './offermodal';
 import Footer from '../Footer/footer';
 import SwipeCard from './SwipeCard';
 
@@ -29,6 +30,27 @@ const NFTSwipe = () => {
   const maxValue = que_res?.maxValue;
   const [count] = useState(0);
   const [Premium] = useState(false);
+
+  const makeAnOffer = async () => {
+    FAV_NFT.push({
+      _name: name,
+      _url: url,
+    });
+
+    // await addToLikeNft(account, id); // Ensure this function is defined
+    handleClose();
+    setName('');
+    setUrl('');
+    router.push({
+      pathname: '/favourite',
+      state: FAV_NFT,
+    });
+  };
+
+  const handleFavClick = (e) => {
+    e.preventDefault(); // Prevent the default link behavior
+    setOpen(true); // Open the modal
+  };
 
   const data = [
     {
@@ -73,12 +95,20 @@ const NFTSwipe = () => {
           <IconButton className={styles.swipeButtons_left}>
             <CloseIcon fontSize="large" />
           </IconButton>
-          <Link href="/favourite" passHref>
+          <a
+            href="/favourite"
+            className={cx(styles.menuLink, styles.link)}
+            style={{ color: '#fff' }}
+            onClick={handleFavClick} // Add click handler
+          >
             <IconButton className={styles.swipeButtons_star}>
               <StarRateIcon fontSize="large" />
             </IconButton>
-          </Link>
-          <IconButton className={styles.swipeButtons_right}>
+          </a>
+          <IconButton
+            className={styles.swipeButtons_right}
+            onClick={() => setOpen(true)} // Open modal when favorite button is clicked
+          >
             <FavoriteIcon fontSize="large" />
           </IconButton>
           <Link href="/subscription" passHref>
@@ -87,6 +117,11 @@ const NFTSwipe = () => {
             </IconButton>
           </Link>
         </div>
+        <OfferModal
+          setModal={open}
+          close={handleClose}
+          makeAnOffer={makeAnOffer}
+        />
       </div>
     </div>
   );

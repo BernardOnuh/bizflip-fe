@@ -1,0 +1,74 @@
+.container {
+    position: absolute;
+    width: 100%;
+    padding-top: 70px;
+    box-sizing: border-box;
+}
+
+.body {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 80px);
+    background: -webkit-linear-gradient(-45deg, #fc466b 20%, #3f5efb 100%);
+    background: linear-gradient(135deg, #fc466b 20%, #3f5efb 100%);
+    padding-bottom: 50px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.main {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 26px;
+    background: transparent;
+    // background-color: rgb(0, 0, 0);
+}
+
+
+.flex {
+    display: grid;
+    gap: 25px;
+}
+
+.grid_cols_4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.card {
+    border-radius: 20px;
+}
+
+.width_300 {
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+}
+
+.reletive {
+    position: relative;
+
+    .inner_reletive{
+        width: max-content;
+        position: relative;
+    }
+}
+
+.absolute {
+    position: absolute;
+}
+
+.character_name {
+    bottom: 10px;
+    right: 5px;
+    background-color: chocolate;
+    border-radius: 10px;
+    padding: 4px;
+    color: white;
+
+}

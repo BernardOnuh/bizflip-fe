@@ -10,7 +10,7 @@ export default function valuation() {
   return (
     <div className="">
       <Header/>
-     <ValuationPage  />
+     <ValuationPage />
      <Chat/>
     </div>
   );
