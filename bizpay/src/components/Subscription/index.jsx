@@ -1,5 +1,6 @@
+
+import Card from './Children/index';
 import React, { useState } from 'react';
-import Card from './Children/Card';
 import styles from './styles.module.scss';
 
 const Data = [
@@ -35,13 +36,30 @@ const Data = [
 const Subscription = () => {
   const [active, setActive] = useState(2);
 
-  const setActivediv = id => {
+  const setActivediv = (id) => {
     setActive(id);
   };
 
   const selectPlan = async () => {
-    console.log("Selected Plan ID:", active);
-    alert("API connection logic is currently disabled.");
+    try {
+      const response = await fetch('/api/handleSubscription', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ planId: active }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      const { link } = data;
+      window.open(link, '_blank');
+    } catch (error) {
+      console.error('Error selecting plan:', error);
+    }
   };
 
   return (
@@ -58,7 +76,7 @@ const Subscription = () => {
               </div>
             </div>
             <div className={styles.subscription_details}>
-              {Data.map(item => (
+              {Data.map((item) => (
                 <Card
                   key={item.id}
                   data={item}

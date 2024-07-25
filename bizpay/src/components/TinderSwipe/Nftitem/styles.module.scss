@@ -1,0 +1,114 @@
+.main_modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 24px;
+  }
+  
+  .buttons {
+    width: 20vw;
+    height: 70px;
+    margin: 0 auto;
+    font-size: 0;
+    display: flex;
+    flex-wrap: no-wrap;
+    align-items: stretch;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(to right,#bd3f32,  #5c31e8);
+    border-radius: 25px;
+  
+    & > * {
+      // flex: 1 0 600px;
+      font-size: 16px;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // transform: skewX(150deg);
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+    }
+    &__secondary_bg {
+      flex: 1;
+      background: transparent;
+    }
+    &__secondary {
+      // transform: skewX(150deg);
+      color: black;
+      width: 100%;
+      // transform: skewX(150deg);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+  
+    &__primary_bg {
+      flex: 2;
+      // background: linear-gradient(to right, #bd3f32, #cb356b);
+    }
+  
+    &__primary_divider {
+      .divider_inner {
+        border-right: 2px dotted #fff;
+        border-width: 2px;
+        height: 60px;
+        background: #fff;
+        border-radius: 10px;
+      }
+    }
+  
+    &__primary {
+      width: 100%;
+      // transform: skewX(150deg);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // background: linear-gradient(to right, #bd3f32, #cb356b);
+    }
+  
+    &__invest_bg {
+      flex: 2;
+      // background: linear-gradient(to right, #5c31e8, #01010a);
+    }
+  
+    &__invest {
+      width: 100%;
+      // transform: skewX(150deg);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }  
+  
+    &__text {
+      cursor: pointer;
+      font-weight: bold;
+      // transform: skew(-150deg);
+    }
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .buttons {
+      & > *:hover {
+        flex: 1 0 2000px;
+      }
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .buttons {
+      width: 70vw;
+    }
+  }
+  
+  @media only screen and (max-width: 524px) {
+    .buttons {
+      width: 90vw;
+    }
+  }
+  

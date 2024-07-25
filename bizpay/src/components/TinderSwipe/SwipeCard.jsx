@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TinderCard from 'react-tinder-card';
 import styles from './styles.module.scss';
 
-const SwipeCard = ({ name, url, age, description }) => {
+const SwipeCard = ({ name, url, age, description, onSwipeRight }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+
+  useEffect(() => {
+    // Any client-specific logic or side effects go here
+  }, []);
 
   const handleCardClick = () => {
     setIsFlipped(!isFlipped);
@@ -11,6 +15,9 @@ const SwipeCard = ({ name, url, age, description }) => {
 
   const swiped = (direction, nameToDelete) => {
     console.log('removing: ' + nameToDelete);
+    if (direction === 'right') {
+      onSwipeRight(); // Notify parent component on right swipe
+    }
   };
 
   const outOfFrame = (name) => {

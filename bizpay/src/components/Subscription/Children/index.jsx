@@ -5,7 +5,6 @@ const Card = ({ data, setActive, activediv }) => {
   const handleClick = () => {
     setActive(data.id);
   };
-
   return (
     <div
       className={`${styles.card_main} ${
@@ -25,9 +24,11 @@ const Card = ({ data, setActive, activediv }) => {
         <span>/{data.days}</span>
       </div>
       <div className={styles.save}>
+        {/* <span>SAVE </span> */}
         <span>{data.Saving}</span>
       </div>
       <div className={styles.total_price}>
+        {/* <span>SAVE </span> */}
         <span>${data.Total_price}</span>
       </div>
     </div>

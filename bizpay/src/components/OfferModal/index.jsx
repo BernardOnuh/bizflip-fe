@@ -4,25 +4,19 @@ import 'react-datetime/css/react-datetime.css';
 import { ClipLoader } from 'react-spinners';
 import Select from 'react-dropdown-select';
 import cx from 'classnames';
-import { styled } from '@mui/material/styles';
-import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Skeleton from '@mui/material/Skeleton';
+import Radio from '@mui/material/Radio';
+import Skeleton from 'react-loading-skeleton';
+// import showToast from 'utils/toast'; // Dormant: to be integrated later
+
+// import { formatNumber } from 'utils'; // Dormant: to be integrated later
+// import useTokens from 'hooks/useTokens'; // Dormant: to be integrated later
+// import { useSalesContract } from 'contracts'; // Dormant: to be integrated later
+import PriceInput from '../PriceInput';
 import Modal from '../Modal';
 import styles from '../Modal/common.module.scss';
 import InputError from '../InputError';
-import PriceInput from '../PriceInput';
-
-// Dummy icon for Web3 functionality
-//import DummyIcon from '../icons/DummyIcon';
-
-// Custom Radio with MUI styling
-const CustomRadio = styled(Radio)(({ theme }) => ({
-  '&.Mui-checked': {
-    color: '#1969FF',
-  },
-}));
 
 const OfferModal = ({
   visible,
@@ -34,11 +28,15 @@ const OfferModal = ({
   offers,
   account,
 }) => {
+  const { tokens } = { tokens: [] }; // useTokens(); // Dormant: to be integrated later
+  const { getSalesContract } = {}; // useSalesContract(); // Dormant: to be integrated later
   const title = type === 'offer' ? 'Place your offer' : 'Invest';
   const label = type === 'offer' ? 'Place Offer' : 'Invest';
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState('1');
-  const [endTime, setEndTime] = useState(new Date(new Date().getTime() + 24 * 60 * 60 * 1000));
+  const [endTime, setEndTime] = useState(
+    new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
+  );
   const [options, setOptions] = useState([]);
   const [selected, setSelected] = useState([]);
   const [tokenPrice, setTokenPrice] = useState();
@@ -47,41 +45,55 @@ const OfferModal = ({
   const [isEscrow, setIsEscrow] = useState(0);
 
   useEffect(() => {
-    // Dummy token list
-    const dummyTokens = [
-      { address: '0x123', symbol: 'TOKEN1', icon: '/images/token1.png', decimals: 18 },
-      { address: '0x456', symbol: 'TOKEN2', icon: '/images/token2.png', decimals: 18 },
-    ];
-    setOptions(dummyTokens);
-  }, []);
+    if (tokens?.length > 0) {
+      setOptions(tokens);
+    }
+  }, [tokens]);
 
   useEffect(() => {
     if (visible) {
       setPrice('');
       setQuantity('1');
       setEndTime(new Date(new Date().getTime() + 24 * 60 * 60 * 1000));
-      if (options?.length > 1) {
-        setSelected([options[0]]);
+      if (tokens?.length > 1) {
+        setSelected([tokens[0]]);
       }
     }
-  }, [visible, options]);
+  }, [visible]);
 
   const hasTokenOffer = () => {
     const result =
       offers.findIndex(
-        (offer) =>
+        offer =>
           offer.creator?.toLowerCase() === account?.toLowerCase() &&
           offer.deadline >= new Date().getTime()
       ) > -1;
     return result;
   };
 
+  const CustomRadio = (props) => (
+    <Radio
+      {...props}
+      sx={{
+        color: '#1969FF',
+        '&.Mui-checked': {
+          color: '#1969FF',
+        },
+      }}
+    />
+  );
+
   const getTokenPrice = () => {
     if (tokenPriceInterval) clearInterval(tokenPriceInterval);
-    // Dummy function to simulate token price
-    const func = () => {
-      const price = Math.random() * 100; // Dummy price
-      setTokenPrice(price);
+    const func = async () => {
+      const tk = selected[0].address || ''; // ethers.constants.AddressZero; // Dormant: to be integrated later
+      try {
+        const salesContract = await getSalesContract();
+        const price = await salesContract.getPrice(tk);
+        setTokenPrice(parseFloat('0')); // ethers.utils.formatUnits(price, 18))); // Dormant: to be integrated later
+      } catch {
+        setTokenPrice(null);
+      }
     };
     func();
     setTokenPriceInterval(setInterval(func, 60 * 1000));
@@ -89,11 +101,10 @@ const OfferModal = ({
 
   useEffect(() => {
     if (selected.length === 0) return;
-
     getTokenPrice();
   }, [selected]);
 
-  const handleQuantityChange = (e) => {
+  const handleQuantityChange = e => {
     const val = e.target.value;
     if (!val) {
       setQuantity('');
@@ -113,8 +124,7 @@ const OfferModal = ({
     }
 
     if (hasTokenOffer()) {
-      // Show a dummy error message
-      alert('You have already submitted the offer');
+      // showToast('error', 'You have already submitted the offer'); // Dormant: to be integrated later
       return;
     }
 
@@ -122,7 +132,7 @@ const OfferModal = ({
   };
 
   const validateInput = () => {
-    if (price.length === 0 || parseFloat(price) === 0) return false;
+    if (price.length === 0 || parseFloat(price) == 0) return false;
     if (totalSupply > 1 && quantity.length === 0) return false;
     if (endTime.getTime() < new Date().getTime()) return false;
     return true;
@@ -144,7 +154,7 @@ const OfferModal = ({
           <RadioGroup
             className={styles.inputWrapper}
             value={JSON.stringify(isEscrow)}
-            onChange={(e) => setIsEscrow(e.currentTarget.value === 'true')}
+            onChange={e => setIsEscrow(e.currentTarget.value === 'true')}
           >
             <FormControlLabel
               classes={{
@@ -174,7 +184,7 @@ const OfferModal = ({
             options={options}
             disabled={confirming}
             values={selected}
-            onChange={(tk) => {
+            onChange={tk => {
               setSelected(tk);
             }}
             className={styles.select}
@@ -210,11 +220,11 @@ const OfferModal = ({
             value={'' + price}
             onChange={setPrice}
             disabled={confirming}
-            onInputError={(err) => setInputError(err)}
+            onInputError={err => setInputError(err)}
           />
           <div className={styles.usdPrice}>
             {!isNaN(tokenPrice) && tokenPrice !== null ? (
-              `$${(parseFloat(price) || 0) * tokenPrice.toFixed(2)}`
+              `$${'0.00'}` // formatNumber(((parseFloat(price) || 0) * tokenPrice).toFixed(2))}` // Dormant: to be integrated later
             ) : (
               <Skeleton width={100} height={24} />
             )}
@@ -241,14 +251,14 @@ const OfferModal = ({
         <div className={styles.formInputCont}>
           <Datetime
             value={endTime}
-            onChange={(val) => setEndTime(val.toDate())}
+            onChange={val => setEndTime(val.toDate())}
             inputProps={{
               className: styles.formInput,
-              onKeyDown: (e) => e.preventDefault(),
+              onKeyDown: e => e.preventDefault(),
               disabled: confirming,
             }}
             closeOnSelect
-            isValidDate={(cur) =>
+            isValidDate={cur =>
               cur.valueOf() > new Date().getTime() - 1000 * 60 * 60 * 24
             }
           />
