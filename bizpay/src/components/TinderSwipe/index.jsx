@@ -8,7 +8,7 @@ import StarRateIcon from '@mui/icons-material/StarRate';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import NftItem from './Nftitem';
-import Link from 'next/link';
+import Link from 'next/link';  // Import Link from next/link
 import { useRouter } from 'next/router';
 import OfferModal from '../OfferModal';
 import SwipeCard from './SwipeCard';
@@ -72,7 +72,7 @@ const NFTSwipe = () => {
 
   const handleSwipeRight = (nft) => {
     setSelectedNft(nft);
-    setOfferModalVisible(true);
+    setOpen(true);
   };
 
   return (
@@ -97,16 +97,15 @@ const NFTSwipe = () => {
           <IconButton className={styles.swipeButtons_left}>
             <CloseIcon fontSize="large" />
           </IconButton>
-          <a
-            href="/favourite"
-            className={cx(styles.menuLink, styles.link)}
-            style={{ color: '#fff' }}
-            onClick={handleFavClick}
-          >
-            <IconButton className={styles.swipeButtons_star}>
+          <Link href="/favourite" passHref>
+            <IconButton
+              className={cx(styles.swipeButtons_star, styles.menuLink, styles.link)}
+              style={{ color: '#fff' }}
+              onClick={handleFavClick}
+            >
               <StarRateIcon fontSize="large" />
             </IconButton>
-          </a>
+          </Link>
           <IconButton
             className={styles.swipeButtons_right}
             onClick={() => setOfferModalVisible(true)}
