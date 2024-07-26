@@ -7,8 +7,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
-import NftItem from './Nftitem';
-import Link from 'next/link';  // Import Link from next/link
+import NftItem from './Nftitem'; // Ensure correct import
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import OfferModal from '../OfferModal';
 import SwipeCard from './SwipeCard';
@@ -19,28 +19,26 @@ const NFTSwipe = () => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [selectedNft, setSelectedNft] = useState(null);
+  const [modalType, setModalType] = useState(''); // New state for managing the modal type
+  const [offerPlacing, setOfferPlacing] = useState(false);
+  const [type, setType] = useState('');
   const [offerModalVisible, setOfferModalVisible] = useState(false);
+  const handleClose = () => setOpen(false); // Ensure the modal closes
 
-  const handleClose = () => setOpen(true);
-
-  const makeAnOffer = async () => {
-    FAV_NFT.push(selectedNft);
-    handleClose();
-    setSelectedNft(null);
-    router.push('/favourite', undefined, { shallow: true });
+  const handleMakeOfferModal = () => {
+      setOfferModalVisible(true);
   };
 
-  const handleFavClick = (e) => {
-    e.preventDefault();
-    setOpen(true);
+  const makeAnOffer = async () => {
+    setType('offer');
+    handleMakeOfferModal();
+    handleClose();
   };
 
   const invest = async () => {
+    setType('invest');
+    handleMakeOfferModal();
     handleClose();
-  };
-
-  const handleLater = e => {
-    console.log('handleLater', e.currentTarget);
   };
 
   const data = [
@@ -70,9 +68,14 @@ const NFTSwipe = () => {
     },
   ];
 
+
+  const handleLater = e => {
+    console.log('handleLater', e.currentTarget);
+  };
+
   const handleSwipeRight = (nft) => {
     setSelectedNft(nft);
-    setOpen(true);
+    setOpen(true); // Ensure the modal opens
   };
 
   return (
@@ -101,14 +104,14 @@ const NFTSwipe = () => {
             <IconButton
               className={cx(styles.swipeButtons_star, styles.menuLink, styles.link)}
               style={{ color: '#fff' }}
-              onClick={handleFavClick}
+              onClick={() => setModalType('offer')}
             >
               <StarRateIcon fontSize="large" />
             </IconButton>
           </Link>
           <IconButton
             className={styles.swipeButtons_right}
-            onClick={() => setOfferModalVisible(true)}
+            onClick={() => setModalType('invest')}
           >
             <FavoriteIcon fontSize="large" />
           </IconButton>
@@ -119,11 +122,16 @@ const NFTSwipe = () => {
           </Link>
         </div>
         <OfferModal
-          visible={offerModalVisible}
-          onClose={() => setOfferModalVisible(false)}
-          onMakeOffer={makeAnOffer}
-          confirming={false}
-        />
+            visible={offerModalVisible}
+            onClose={() => setOfferModalVisible(false)}
+           // onMakeOffer={handleMakeOffer}
+            confirming={offerPlacing}
+            type={type}
+            //totalSupply={tokenType.current === 1155 ? maxSupply() : null}
+            //offers={selectedToken && selectedToken.offers}
+            //escrowOffer={selectedToken && selectedToken.escrowOffer}
+            //account={account}
+          />
         <NftItem
           setModal={open}
           close={handleClose}

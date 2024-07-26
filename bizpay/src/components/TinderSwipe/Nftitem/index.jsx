@@ -1,9 +1,8 @@
-import { Modal } from '@mui/material';
 import React from 'react';
+import { Modal } from '@mui/material';
 import styles from './styles.module.scss';
-// import CloseIcon from '@mui/icons-material/Close';
 
-const NftItem = ({ setModal, close, makeAnOffer, later, invest }) => {
+const NftItem = ({ setModal, close, makeAnOffer, invest, later }) => {
   return (
     <Modal
       keepMounted
@@ -17,7 +16,7 @@ const NftItem = ({ setModal, close, makeAnOffer, later, invest }) => {
           <div>
             <div className={styles.buttons}>
               <div className={styles.buttons__primary_bg}>
-                <div onClick={makeAnOffer} className={styles.buttons__primary}>
+                <div onClick={() => { makeAnOffer(); close(); }} className={styles.buttons__primary}>
                   <div className={styles.buttons__text}>Make Offer</div>
                 </div>
               </div>
@@ -25,7 +24,7 @@ const NftItem = ({ setModal, close, makeAnOffer, later, invest }) => {
                 <div className={styles.divider_inner}></div>
               </div>
               <div className={styles.buttons__invest_bg}>
-                <div onClick={invest} className={styles.buttons__invest}>
+                <div onClick={() => { invest(); close(); }} className={styles.buttons__invest}>
                   <div className={styles.buttons__text}>Invest</div>
                 </div>
               </div>
@@ -36,7 +35,7 @@ const NftItem = ({ setModal, close, makeAnOffer, later, invest }) => {
                   className={styles.buttons__secondary}
                   onClick={e => {
                     later(e);
-                    close();
+                    close(); // Ensure the modal closes
                   }}
                 >
                   <div className={styles.buttons__text}>
