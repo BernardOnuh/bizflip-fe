@@ -4,7 +4,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { styled } from '@mui/material/styles';
-
+import Image from 'next/image';
 import { getRandomIPFS } from '../utils'; // Adjust the import path based on your project structure
 import FilterWrapper from '../FilterWrapper'; // Adjust the import path based on your project structure
 import BootstrapTooltip from '../BootstrapTooltip'; // Adjust the import path based on your project structure
@@ -165,11 +165,11 @@ const ExploreCollections = ({ initialCollectionItems = [], initialCollections = 
             >
               {collections.includes(item.address) ? (
                 <Logo withBorder>
-                  <img src={iconCheck} alt="Selected" />
+                  <Image src={iconCheck} alt="Selected" />
                 </Logo>
               ) : (
                 <Logo>
-                  <img
+                  <Image
                     src={
                       item.logoImageHash
                         ? `${getRandomIPFS('', true)}${item.logoImageHash}`

@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import FilterWrapper from '../FilterWrapper';
 import { Categories } from '../constants/filter.constants';
 import iconCheck from '../../../public/images/svgs/check_blue.svg';
+import Image from 'next/image';
 
 const Body = styled('div')({
   display: 'flex',
@@ -72,7 +73,7 @@ const CategoriesFilter = () => {
               onClick={() => handleSelectCategory(cat.id)}
             >
               <Logo>
-                <img src={cat.id === selectedCategory ? iconCheck : cat.icon} />
+                <Image src={cat.id === selectedCategory ? iconCheck : cat.icon} />
               </Logo>
               <Name>{cat.label}</Name>
             </Collection>

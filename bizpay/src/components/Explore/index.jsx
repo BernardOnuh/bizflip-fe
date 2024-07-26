@@ -13,6 +13,7 @@ import useWindowDimensions from '../hooks/useWindowDimensions';
 import usePrevious from '../hooks/usePrevious';
 import iconCollapse from '../../../public/images/svgs/collapse.svg';
 import styles from './styles.module.scss';
+import Image from 'next/image';
 
 const fetchCollections = async () => {
   // Replace with your actual API endpoint
@@ -274,7 +275,7 @@ const ExploreAllPage = () => {
         <div className={cx(styles.sidebar, collapsed && styles.collapsed)}>
           <div className={styles.sidebarHeader}>
             {!collapsed && <div className={styles.sidebarTitle}>Filters</div>}
-            <img
+            <Image
               src={iconCollapse}
               className={styles.iconCollapse}
               onClick={() => setCollapsed(!collapsed)}
