@@ -21,7 +21,6 @@ const BrochurePage = () => {
 
   return (
     <div className={styles.container}>
-      <Header />
       <div className={styles.body}>
         <div className={styles.main}>
           <div className={styles.mainLeft}>

@@ -76,6 +76,10 @@
   align-items: center;
 }
 
+.calendarAboveInput .rdtPicker {
+	bottom: 60px;
+}
+
 
 .react-chatbot-kit-chat-input__input::placeholder {
   color: black !important;

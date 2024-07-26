@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import Footer from '../Footer/footer'
+import Footer from '../Footer/footer';
 import styles from './styles.module.scss';
 
 const HowToUsePage = () => {
@@ -69,8 +69,8 @@ const HowToUsePage = () => {
                 is transferred to your blockchain wallet. And that`s it!{' '}
               </li>
             </ul>
-            <Link href="/create">
-              <a className={styles.exploreButton}>Join Now</a>
+            <Link href="/create" className={styles.exploreButton}>
+              Join Now
             </Link>
           </div>
         </div>
