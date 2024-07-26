@@ -1,11 +1,14 @@
 import React from 'react';
 import cx from 'classnames';
-import Card from '../NFTCard';
-
+import dynamic from 'next/dynamic';
 import styles from './styles.module.scss';
 import { Categories } from '../constants/filter.constants';
-import { useDispatch } from 'react-redux';
 import FilterActions from '../actions/filter.actions';
+
+// Use dynamic import for the Card component if it's large or has heavy dependencies
+const Card = dynamic(() => import('../NFTCard'), {
+  ssr: false, // If the component requires client-side rendering only
+});
 
 const NFTsGrid = ({
   items,
@@ -17,9 +20,9 @@ const NFTsGrid = ({
   onCreate = () => {},
   onLike = () => {},
 }) => {
-  const dispatch = useDispatch();
   const n = numPerRow || 6;
   const className = cx(styles.nft, styles[`num${n}`]);
+
   return (
     <>
       {showCreate && (

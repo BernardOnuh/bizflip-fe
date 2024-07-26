@@ -9,7 +9,8 @@ const SwipeCard = ({ name, url, age, description, onSwipeRight }) => {
     // Any client-specific logic or side effects go here
   }, []);
 
-  const handleCardClick = () => {
+  const handleCardClick = (e) => {
+    e.preventDefault();
     setIsFlipped(!isFlipped);
   };
 
@@ -35,6 +36,7 @@ const SwipeCard = ({ name, url, age, description, onSwipeRight }) => {
       <div
         className={`${styles.card} ${styles.bg_cover} ${styles.bg_center} ${isFlipped ? styles.flipped : ''}`}
         onClick={handleCardClick}
+        onTouchStart={handleCardClick} // Add touch event listener
       >
         <div className={styles.cardFront} style={{ backgroundImage: 'url(' + url + ')' }}>
           <h3>{name}</h3>

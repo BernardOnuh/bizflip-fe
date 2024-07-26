@@ -1,16 +1,12 @@
-import { ChainId } from '@sushiswap/sdk';
-
-// import iconFTM from 'assets/imgs/ftm.png';
+import { useChainId } from 'wagmi';
 import iconWFTM from '../../../public/images/imgs/wftm.png';
 import iconUSDT from '../../../public/images/imgs/usdt.png';
 import iconUSDC from '../../../public/images/imgs/usdc.png';
 import iconDAI from '../../../public/images/imgs/dai.png';
 
-// eslint-disable-next-line no-undef
-const isMainnet = process.env.REACT_APP_ENV === 'MAINNET';
-
+// Define your token data
 const Tokens = {
-  [ChainId.MAINNET]: [
+  1: [  // Chain ID for Ethereum Mainnet
     {
       address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       name: 'Wrapped Ethereum',
@@ -40,14 +36,7 @@ const Tokens = {
       icon: iconDAI,
     },
   ],
-  [ChainId.FANTOM]: [
-    // {
-    //   address: '',
-    //   name: 'Fantom',
-    //   symbol: 'FTM',
-    //   decimals: 18,
-    //   icon: iconFTM,
-    // },
+  250: [  // Chain ID for Fantom Mainnet
     {
       address: '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83',
       name: 'Wrapped Fantom',
@@ -77,60 +66,13 @@ const Tokens = {
       icon: iconDAI,
     },
   ],
-  [ChainId.FANTOM_TESTNET]: [
-    // {
-    //   address: '',
-    //   name: 'Fantom',
-    //   symbol: 'FTM',
-    //   decimals: 18,
-    //   icon: iconFTM,
-    // },
-    {
-      address: '0xf1277d1ed8ad466beddf92ef448a132661956621',
-      name: 'Wrapped Fantom',
-      symbol: 'WFTM',
-      decimals: 18,
-      icon: iconWFTM,
-    },
-  ],
-  [ChainId.ROPSTEN]: [
-    // {
-    //   address: '',
-    //   name: 'Fantom',
-    //   symbol: 'FTM',
-    //   decimals: 18,
-    //   icon: iconFTM,
-    // },
-    {
-      address: '0xc778417e063141139fce010982780140aa0cd5ab',
-      name: 'Ropsten ETH',
-      symbol: 'ETH',
-      decimals: 18,
-      icon: iconWFTM,
-    },
-  ],
-  [ChainId.GÖRLI]: [
-    // {
-    //   address: '',
-    //   name: 'Fantom',
-    //   symbol: 'FTM',
-    //   decimals: 18,
-    //   icon: iconFTM,
-    // },
-    {
-      address: '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6',
-      name: 'Goerli ETH',
-      symbol: 'GoerliETH',
-      decimals: 18,
-      icon: iconWFTM,
-    },
-  ],
+  // Add other chain token data as needed
 };
 
 export default function useTokens() {
-  const chain = isMainnet ? ChainId.MAINNET : ChainId.GÖRLI;
+  const chainId = useChainId(); // Use useChainId to get the current chain ID
 
-  const tokens = Tokens[chain];
+  const tokens = Tokens[chainId] || [];
 
   const getTokenByAddress = addr => {
     const address =
@@ -139,9 +81,7 @@ export default function useTokens() {
       addr === 'eth'
         ? ''
         : addr;
-    return (tokens || []).find(
-      tk => tk.address.toLowerCase() === address.toLowerCase()
-    );
+    return tokens.find(tk => tk.address.toLowerCase() === address.toLowerCase());
   };
 
   return { getTokenByAddress, tokens };

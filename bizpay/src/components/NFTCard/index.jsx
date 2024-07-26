@@ -8,15 +8,15 @@ import {
   FavoriteBorder as FavoriteBorderIcon,
   Favorite as FavoriteIcon,
   CheckCircle as CheckCircleIcon,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import Loader from 'react-loader-spinner';
-import Carousel from 'react-responsive-carousel';
+import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ReactPlayer from 'react-player';
 
 import SuspenseImg from '../../components/SuspenseImg';
 import BootstrapTooltip from '../BootstrapTooltip';
-import { formatNumber, getRandomIPFS } from 'utils';
+import { formatNumber, getRandomIPFS } from '../utils';
 import useTokens from '../hooks/useTokens';
 
 import iconPlus from '../../../public/images/svgs/plus.svg';
@@ -289,9 +289,9 @@ const BaseCard = ({ item, loading, style, create, onCreate, onLike }) => {
                     >
                       <SuspenseImg
                         src={
-                          item.thumbnailPath?.length > 10
+                          item?.thumbnailPath?.length > 10
                             ? `${storageUrl}/image/${item.thumbnailPath}`
-                            : item?.imageURL || info?.image
+                            : item?.imageURL
                         }
                         className={styles.media}
                         alt={item.name}
@@ -301,129 +301,78 @@ const BaseCard = ({ item, loading, style, create, onCreate, onLike }) => {
               </div>
             )}
           </div>
-        </div>
-        <div className={styles.content}>
-          <div className={styles.topLine}>
-            <div className={styles.itemName}>
-              {loading || fetching ? (
-                <Skeleton width={100} height={20} />
-              ) : (
-                <div className={styles.label}>
-                  {collection?.collectionName || collection?.name}
-                  {collection?.isVerified && (
-                    <BootstrapTooltip
-                      title="Verified Collection"
-                      placement="top"
-                    >
-                      <CheckCircleIcon className={styles.checkIcon} />
-                    </BootstrapTooltip>
-                  )}
-                </div>
-              )}
-              {loading || fetching ? (
-                <Skeleton width={100} height={20} />
-              ) : (
-                <div className={styles.name}>{item?.name || info?.name}</div>
-              )}
-            </div>
-            {auction?.reservePrice || item?.price ? (
-              <div className={styles.alignRight}>
-                {!loading && (
-                  <div className={styles.label}>
-                    {auctionActive ? 'Auction' : 'Price'}
-                  </div>
-                )}
-                {loading || fetching ? (
-                  <Skeleton width={80} height={20} />
-                ) : (
-                  <div className={cx(styles.label, styles.price)}>
-                    <img
-                      src={
-                        auctionActive
-                          ? auction?.token?.icon
-                          : getTokenByAddress(item?.paymentToken)?.icon ||
-                            wFTMLogo
-                      }
-                    />
-                    {formatNumber(
-                      auctionActive
-                        ? auction.reservePrice
-                        : item.price.toFixed(2)
-                    )}
-                  </div>
-                )}
-              </div>
+          <div className={styles.titleBox}>
+            {!item ? (
+              <Skeleton width={150} height={20} />
             ) : (
-              ''
+              <h3 className={styles.title}>{item.name || info?.name}</h3>
             )}
           </div>
-          <div className={styles.alignBottom}>
-            <div>
-              {auctionActive && (
-                <>
-                  {!loading && <div className={styles.label2}>Time left</div>}
-                  <div className={styles.name2}>
-                    {formatDuration(auction.endTime)}
-                  </div>
-                </>
-              )}
-            </div>
-            {item?.lastSalePrice > 0 && (
-              <div className={styles.alignRight}>
-                {!loading && <div className={styles.label2}>Last Price</div>}
-                {loading || fetching ? (
-                  <Skeleton width={80} height={20} />
-                ) : (
-                  <div className={cx(styles.label2, styles.price2)}>
-                    <img
-                      src={
-                        getTokenByAddress(item?.lastSalePricePaymentToken)?.icon
-                      }
-                    />
-                    {formatNumber(item.lastSalePrice)}
-                  </div>
-                )}
+          <div className={styles.content}>
+            <Link href={`/collection/${collection?.slug}`}>
+              <a className={styles.collectionLink}>{collection?.name}</a>
+            </Link>
+            <div className={styles.statBox}>
+              <div className={styles.statItem}>
+                <BootstrapTooltip title="Price">
+                  <img
+                    src={wFTMLogo.src}
+                    className={styles.statItemIcon}
+                    alt="FTM"
+                  />
+                </BootstrapTooltip>
+                <span className={styles.statItemLabel}>
+                  {loading || !item
+                    ? '---'
+                    : `${formatNumber(item.price)} FTM`}
+                </span>
               </div>
-            )}
+              <div className={styles.statItem}>
+                <BootstrapTooltip title="Bid Status">
+                  <CheckCircleIcon
+                    className={styles.statItemIcon}
+                    style={{
+                      color: auctionActive ? '#4caf50' : '#f44336',
+                    }}
+                  />
+                </BootstrapTooltip>
+                <span className={styles.statItemLabel}>
+                  {auctionActive ? 'Active' : 'Ended'}
+                </span>
+              </div>
+              <div className={styles.statItem}>
+                <BootstrapTooltip title="End Time">
+                  <i className={cx('far fa-clock', styles.statItemIcon)} />
+                </BootstrapTooltip>
+                <span className={styles.statItemLabel}>
+                  {loading || !auction?.endTime
+                    ? '---'
+                    : `${formatDuration(auction?.endTime)}`}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
+        {onCreate && (
+          <div className={styles.createBtnBox}>
+            <button
+              className={styles.createBtn}
+              onClick={() => onCreate(item)}
+            >
+              <img src={iconPlus.src} alt="Create" />
+              <span className={styles.createBtnLabel}>Create Bundle</span>
+            </button>
+          </div>
+        )}
       </>
     );
   };
 
   return (
-    <div style={style} className={styles.root} onClick={onCreate}>
-      <div className={styles.card}>
-        {create ? (
-          <div className={styles.createBtn}>
-            <div className={styles.createIcon}>
-              <img src={iconPlus} />
-            </div>
-            <div className={styles.createLabel}>Create Bundle</div>
-          </div>
-        ) : item ? (
-          <Link
-            href={
-              item.items
-                ? `/bundle/${item._id}`
-                : `/explore/${item.contractAddress}/${item.tokenID}`
-            }
-            className={styles.link}
-          >
-            {renderContent()}
-          </Link>
-        ) : (
-          renderContent()
-        )}
-      </div>
-      {item?.tokenType === 1155 && (
-        <>
-          <div className={styles.card} />
-          <div className={styles.card} />
-        </>
-      )}
+    <div className={cx(styles.card, style)}>
+      {renderContent()}
     </div>
   );
 };
 
-export default React.memo(BaseCard);
+export default BaseCard;

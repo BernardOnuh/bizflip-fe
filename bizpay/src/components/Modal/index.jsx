@@ -23,6 +23,7 @@ const Modal = ({
   };
 
   return (
+    <div className='z-[-1]'>
     <div className={cx(styles.container, visible ? styles.visible : null)}>
       <div
         className={cx(styles.modal, small && styles.small)}
@@ -52,6 +53,7 @@ const Modal = ({
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 };

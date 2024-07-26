@@ -1,53 +1,42 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@mui/styles';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { styled } from '@mui/system';
 
-const useStyles = makeStyles(() => ({
-  root: {
-    width: '100%',
-  },
-  wrapper: {
-    marginTop: '-1px !important',
-    marginRight: '-1px !important',
-    boxShadow: 'none',
-    borderRadius: '0 !important',
-    border: '1px solid #D9E1EE',
-    overflow: 'hidden',
-  },
-  header: {
-    height: 64,
-    minHeight: '64px !important',
-    backgroundColor: '#fff',
-    boxShadow: 'none',
-    padding: '0 24px',
-  },
-  heading: {
-    fontWeight: 700,
-    fontSize: 16,
-    flexShrink: 0,
-    color: '#3D3D3D',
-  },
-  arrowIcon: {
-    color: '#3D3D3D',
-    opacity: '0.6',
-  },
-  body: {
-    padding: '32px 24px',
-    borderTop: '1px solid #D9E1EE',
-    boxSizing: 'border-box',
-    backgroundColor: '#D9E1EE1A',
-  },
-  statusSvgDiv: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-}));
+const AccordionWrapper = styled(Accordion)({
+  marginTop: '-1px !important',
+  marginRight: '-1px !important',
+  boxShadow: 'none',
+  borderRadius: '0 !important',
+  border: '1px solid #D9E1EE',
+  overflow: 'hidden',
+});
+
+const AccordionHeader = styled(AccordionSummary)({
+  height: 64,
+  minHeight: '64px !important',
+  backgroundColor: '#fff',
+  boxShadow: 'none',
+  padding: '0 24px',
+});
+
+const Heading = styled('span')({
+  fontWeight: 700,
+  fontSize: 16,
+  flexShrink: 0,
+  color: '#3D3D3D',
+});
+
+const AccordionBody = styled(AccordionDetails)({
+  padding: '32px 24px',
+  borderTop: '1px solid #D9E1EE',
+  boxSizing: 'border-box',
+  backgroundColor: '#D9E1EE1A',
+});
 
 const FilterWrapper = ({ title, classes: classnames, children }) => {
-  const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
 
   const handleAccordionCollapse = (_, isExpanded) => {
@@ -55,24 +44,22 @@ const FilterWrapper = ({ title, classes: classnames, children }) => {
   };
 
   return (
-    <div className={`${classes.root} ${classnames?.root || ''}`}>
-      <Accordion
-        className={classes.wrapper}
+    <div>
+      <AccordionWrapper
         expanded={expanded}
         onChange={handleAccordionCollapse}
       >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon className={classes.arrowIcon} />}
-          className={classes.header}
+        <AccordionHeader
+          expandIcon={<ExpandMoreIcon />}
         >
-          <div className={classes.statusSvgDiv}>
-            <span className={classes.heading}>{title}</span>
+          <div>
+            <Heading>{title}</Heading>
           </div>
-        </AccordionSummary>
-        <AccordionDetails className={`${classes.body} ${classnames?.body || ''}`}>
+        </AccordionHeader>
+        <AccordionBody>
           {children}
-        </AccordionDetails>
-      </Accordion>
+        </AccordionBody>
+      </AccordionWrapper>
     </div>
   );
 };

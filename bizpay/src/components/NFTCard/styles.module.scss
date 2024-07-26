@@ -250,21 +250,9 @@
     box-sizing: border-box;
   }
   
-  :global {
-    .BrainhubCarousel__thumbnail {
-      padding: 0 !important;
-      opacity: 1 !important;
-      margin-right: 5px;
-    }
+
+
   
-    .BrainhubCarousel__thumbnail--selected {
-      :local {
-        .dot {
-          background-color: #007BFF;
-        }
-      }
-    }
-  }
   
   .content {
     padding: 18px 18px 15px 18px !important;
