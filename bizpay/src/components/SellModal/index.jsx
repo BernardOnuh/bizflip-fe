@@ -6,8 +6,7 @@ import PriceInput from '../PriceInput';
 import Modal from '../Modal';
 import styles from '../Modal/common.module.scss';
 import InputError from '../InputError';
-import { useTokens } from '../hooks/useTokens';
-import { useSalesContract } from '../hooks/useSalesContract';
+
 
 const SellModal = ({
   visible,
@@ -20,8 +19,7 @@ const SellModal = ({
   contractApproved,
   totalSupply,
 }) => {
-  const { tokens } = useTokens();
-  const { getSalesContract } = useSalesContract();
+  const tokens =""
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState('1');
   const [alias, setAlias] = useState('');
@@ -39,7 +37,7 @@ const SellModal = ({
     if (visible && tokens?.length) {
       setSelected([tokens[0]]);
     }
-  }, [visible]);
+  }, [visible, startPrice, tokens]);
 
   useEffect(() => {
     if (tokens?.length) {
@@ -48,19 +46,7 @@ const SellModal = ({
   }, [tokens]);
 
   const getTokenPrice = () => {
-    if (tokenPriceInterval) clearInterval(tokenPriceInterval);
-    const func = async () => {
-      const tk = selected[0].address || ethers.constants.AddressZero;
-      try {
-        const salesContract = await getSalesContract();
-        const price = await salesContract.getPrice(tk);
-        setTokenPrice(parseFloat(ethers.utils.formatUnits(price, 18)));
-      } catch {
-        setTokenPrice(null);
-      }
-    };
-    func();
-    setTokenPriceInterval(setInterval(func, 60 * 1000));
+    
   };
 
   useEffect(() => {
@@ -91,7 +77,7 @@ const SellModal = ({
   };
 
   const validateInput = () => {
-    if (price.length === 0 || parseFloat(price) == 0) return false;
+    if (price.length === 0 || parseFloat(price) === 0) return false;
     if (totalSupply > 1 && quantity.length === 0) return false;
     if (selected.length === 0) return false;
     return true;

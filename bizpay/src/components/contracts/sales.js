@@ -220,7 +220,6 @@ export const useSalesContract = () => {
   };
 
   return {
-    getSalesContract,
     buyItemETH,
     buyItemERC20,
     cancelListing,

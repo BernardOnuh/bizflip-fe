@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
-import { shortenAddress, formatNumber } from 'utils';
-import Identicon from '../Identicon';
-
+import { shortenAddress, formatNumber } from '../utils';
 import Modal from '../Modal';
 import styles from './styles.module.scss';
+
+const Identicon = dynamic(() => import('../Identicon'), { ssr: false });
 
 const Holder = ({ holder, children }) => {
   if (!holder) return <div className={styles.holder}>{children}</div>;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import cx from 'classnames';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
-import './styles.css';
+
 import { ClipLoader } from 'react-spinners';
 import Select from 'react-dropdown-select';
 import Skeleton from 'react-loading-skeleton';

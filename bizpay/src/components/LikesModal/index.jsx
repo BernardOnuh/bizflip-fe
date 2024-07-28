@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import Skeleton from 'react-loading-skeleton';
 
-import { shortenAddress } from 'utils';
-import Identicon from 'components/Identicon';
+import { shortenAddress } from '../utils';
+import Identicon from '../Identicon';
 
 import Modal from '../Modal';
 import styles from './styles.module.scss';
