@@ -9,7 +9,7 @@ import {
   Favorite as FavoriteIcon,
   CheckCircle as CheckCircleIcon,
 } from '@mui/icons-material';
-import Loader from 'react-loader-spinner';
+import { Oval } from 'react-loader-spinner';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ReactPlayer from 'react-player';
@@ -185,13 +185,12 @@ const BaseCard = ({ item, loading, style, create, onCreate, onLike }) => {
           ) : (
             <Suspense
               fallback={
-                <Loader
-                  type="Oval"
-                  color="#007BFF"
-                  height={32}
-                  width={32}
-                  className={styles.loader}
-                />
+                <Oval
+                color="#007BFF"
+                height={32}
+                width={32}
+                className={styles.loader}
+              />
               }
             >
               <SuspenseImg
@@ -278,13 +277,12 @@ const BaseCard = ({ item, loading, style, create, onCreate, onLike }) => {
                   ) : (
                     <Suspense
                       fallback={
-                        <Loader
-                          type="Oval"
-                          color="#007BFF"
-                          height={32}
-                          width={32}
-                          className={styles.loader}
-                        />
+                        <Oval
+                        color="#007BFF"
+                        height={32}
+                        width={32}
+                        className={styles.loader}
+                      />
                       }
                     >
                       <SuspenseImg

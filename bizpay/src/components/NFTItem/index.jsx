@@ -46,7 +46,7 @@ import {
 import { toast } from 'react-hot-toast';
 
 import Panel from '../Panel';
-//import Identicon from '../Identicon';
+import Identicon from '../Identicon';
 //import { useNFTContract, useSalesContract, useAuctionContract, useBundleSalesContract } from 'contracts';
 import { shortenAddress, formatNumber, formatError, getRandomIPFS } from '../utils';
 import NFTCard from '../NFTCard';
@@ -305,13 +305,12 @@ const renderMedia = (image, contentType) => {
     return (
       <Suspense
         fallback={
-          <Loader
-            type="Oval"
-            color="#007BFF"
-            height={32}
-            width={32}
-            className={styles.loader}
-          />
+          <Oval
+          color="#007BFF"
+          height={32}
+          width={32}
+          className={styles.loader}
+        />
         }
       >
         <SuspenseImg className={styles.content} src={image} />
@@ -589,7 +588,12 @@ const renderBundleItem = (item, idx) => {
       <div className={styles.bundleItemImage}>
         <Suspense
           fallback={
-            <Loader type="Oval" color="#007BFF" height={32} width={32} />
+            <Oval
+            color="#007BFF"
+            height={32}
+            width={32}
+            className={styles.loader}
+          />
           }
         >
           <SuspenseImg
