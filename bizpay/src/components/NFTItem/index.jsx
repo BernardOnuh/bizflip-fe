@@ -58,7 +58,6 @@ import AuctionModal from '../AuctionModal';
 import BidModal from '../BiModal';
 import OwnersModal from '../OwnersModal';
 import LikesModal from '../LikesModal';
-import { Image } from 'next/image';
 import SuspenseImg from '../SuspenseImg';
 import useTokens from '../hooks/useTokens';
 import usePrevious from '../hooks/usePrevious';
@@ -71,7 +70,7 @@ import filterIcon from '../../../public/images/svgs/filter.svg';
 import checkIcon from '../../../public/images/svgs/check.svg';
 import shareIcon from '../../../public/images/svgs/share.svg';
 import iconArtion from '../../../public/images/svgs/logo_small_blue.svg';
-import iconFacebook from '../../../public/images/Images/facebook.png';
+import iconFacebook from '../../../public/images/imgs/facebook.png';
 import iconTwitter from '../../../public/images/svgs/twitter_blue.svg';
 
 import styles from './styles.module.scss';
