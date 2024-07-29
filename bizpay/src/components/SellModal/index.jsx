@@ -6,6 +6,7 @@ import PriceInput from '../PriceInput';
 import Modal from '../Modal';
 import styles from '../Modal/common.module.scss';
 import InputError from '../InputError';
+import { ClipLoader } from 'react-spinners';
 
 
 const SellModal = ({
