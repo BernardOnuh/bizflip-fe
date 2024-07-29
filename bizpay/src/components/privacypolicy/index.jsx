@@ -1,11 +1,9 @@
 import React from 'react';
-import Header from '../Header';
 import styles from './styles.module.scss';
 
 const PrivacyPolicy = () => {
   return (
     <div className={styles.container}>
-      <Header border />
       <div className={styles.contents}>
         <h2>Privacy policy</h2>
         <h3>Last Updated: march 22, 2022.</h3>
