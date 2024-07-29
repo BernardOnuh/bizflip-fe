@@ -44,7 +44,7 @@ import {
   Redeem as RedeemIcon,
 } from '@mui/icons-material';
 import { toast } from 'react-hot-toast';
-
+import Image from 'next/image';
 import Panel from '../Panel';
 import Identicon from '../Identicon';
 //import { useNFTContract, useSalesContract, useAuctionContract, useBundleSalesContract } from 'contracts';
@@ -56,9 +56,9 @@ import SellModal from '../SellModal';
 import OfferModal from '../OfferModal';
 import AuctionModal from '../AuctionModal';
 import BidModal from '../BiModal';
-//import OwnersModal from '../OwnersModal';
-//import LikesModal from '../LikesModal';
-
+import OwnersModal from '../OwnersModal';
+import LikesModal from '../LikesModal';
+import { Image } from 'next/image';
 import SuspenseImg from '../SuspenseImg';
 import useTokens from '../hooks/useTokens';
 import usePrevious from '../hooks/usePrevious';
@@ -71,7 +71,7 @@ import filterIcon from '../../../public/images/svgs/filter.svg';
 import checkIcon from '../../../public/images/svgs/check.svg';
 import shareIcon from '../../../public/images/svgs/share.svg';
 import iconArtion from '../../../public/images/svgs/logo_small_blue.svg';
-import iconFacebook from '../../../public/images/imgs/facebook.png';
+import iconFacebook from '../../../public/images/Images/facebook.png';
 import iconTwitter from '../../../public/images/svgs/twitter_blue.svg';
 
 import styles from './styles.module.scss';
@@ -282,7 +282,7 @@ const renderMenu = (
         onClick={() => handleSelectFilter(idx)}
       >
         {_filter}
-        <img src={checkIcon} />
+        <Image src={checkIcon} />
       </div>
     ))}
   </Menu>
@@ -371,7 +371,7 @@ const renderItemInfo = () => (
         className={styles.itemMenuBtn}
         onClick={e => setShareAnchorEl(e.currentTarget)}
       >
-        <img src={shareIcon} className={styles.itemMenuIcon} />
+        <Image src={shareIcon} className={styles.itemMenuIcon} />
       </div>
     </div>
     <div
@@ -402,7 +402,7 @@ const renderItemInfo = () => (
             <>
               <div className={styles.ownerAvatar}>
                 {ownerInfo?.imageHash ? (
-                  <img
+                  <Image
                     src={`https://cloudflare-ipfs.com/ipfs/${ownerInfo.imageHash}`}
                     className={styles.avatar}
                   />
@@ -511,7 +511,7 @@ const renderItemInfo = () => (
         <div className={styles.currentPriceLabel}>Current price</div>
         <div className={styles.currentPriceWrapper}>
           <div className={styles.tokenLogo}>
-            <img src={bestListing.token?.icon} />
+            <Image src={bestListing.token?.icon} />
           </div>
           <div className={styles.currentPrice}>
             {formatNumber(bestListing.price)}
@@ -625,7 +625,7 @@ const renderBundleInfoPanel = () => (
         <div className={styles.itemOwner}>
           <div className={styles.ownerAvatar}>
             {creatorInfo?.imageHash ? (
-              <img
+              <Image
                 src={`https://cloudflare-ipfs.com/ipfs/${creatorInfo.imageHash}`}
                 className={styles.avatar}
               />
@@ -676,7 +676,7 @@ const renderAboutPanel = () => (
             rel="noopener noreferrer"
             className={styles.socialLink}
           >
-            <img src={webIcon} />
+            <Image src={webIcon} />
           </a>
         )}
         {collection?.twitterHandle?.length > 0 && (
@@ -686,7 +686,7 @@ const renderAboutPanel = () => (
             rel="noopener noreferrer"
             className={styles.socialLink}
           >
-            <img src={twitterIcon} />
+            <Image src={twitterIcon} />
           </a>
         )}
         {collection?.mediumHandle?.length > 0 && (
@@ -696,7 +696,7 @@ const renderAboutPanel = () => (
             rel="noopener noreferrer"
             className={styles.socialLink}
           >
-            <img src={mediumIcon} />
+            <Image src={mediumIcon} />
           </a>
         )}
         {collection?.telegram?.length > 0 && (
@@ -706,7 +706,7 @@ const renderAboutPanel = () => (
             rel="noopener noreferrer"
             className={styles.socialLink}
           >
-            <img src={telegramIcon} />
+            <Image src={telegramIcon} />
           </a>
         )}
         {collection?.discord?.length > 0 && (
@@ -716,7 +716,7 @@ const renderAboutPanel = () => (
             rel="noopener noreferrer"
             className={styles.socialLink}
           >
-            <img src={discordIcon} />
+            <Image src={discordIcon} />
           </a>
         )}
       </div>
@@ -945,15 +945,29 @@ return (
           </div>
           <div className={styles.itemInfo}>{renderItemInfo()}</div>
           <div className={styles.itemInfoCont}>
-            
+            {info?.properties && (
+              <Panel title="Properties" icon={LabelIcon}>
+                <div className={styles.panelBody}>
+                  {renderProperties(info.properties)}
+                </div>
+              </Panel>
+            )}
+            {bundleID && renderBundleInfoPanel()}
+            {!bundleID && renderAboutPanel()}
+            {!bundleID && renderCollectionPanel()}
+            {!bundleID && renderRoyaltyPanel()}
           </div>
         </div>
         <div className={styles.itemMain}>
           <div className={styles.itemInfoWrapper}>{renderItemInfo()}</div>
           {info?.properties && (
             <div className={cx(styles.panelWrapper, styles.infoPanel)}>
-            
-            </div>
+            <Panel title="Properties">
+              <div className={styles.panelBody}>
+                {renderProperties(info.properties)}
+              </div>
+            </Panel>
+          </div>
           )}
           {bundleID && (
             <div className={cx(styles.panelWrapper, styles.infoPanel)}>
@@ -977,23 +991,544 @@ return (
           )}
           {(winner || auction.current?.resulted === false) && (
             <div className={styles.panelWrapper}>
-          
+              <Panel
+                title={
+                  auctionStarted
+                    ? auctionEnded
+                      ? 'Sale ended'
+                      : `Sale ends in ${formatDuration(
+                          auction.current.endTime
+                        )} (${new Date(
+                          auction.current.endTime * 1000
+                        ).toLocaleString()})`
+                    : `Sale starts in ${formatDuration(
+                        auction.current.startTime
+                      )}`
+                }
+                fixed
+              >
+                <div className={styles.bids}>
+                  {auctionEnded ? (
+                    <div className={styles.result}>
+                      {auction.current.resulted ? (
+                        <>
+                          {'Winner: '}
+                          <Link to={`/account/${winner}`}>
+                            {winner?.toLowerCase() === account?.toLowerCase()
+                              ? 'Me'
+                              : shortenAddress(winner)}
+                          </Link>
+                          &nbsp;(
+                          <Image
+                            src={winningToken?.icon}
+                            className={styles.tokenIcon}
+                          />
+                          {formatNumber(winningBid)})
+                        </>
+                      ) : (
+                        'Auction has concluded'
+                      )}
+                    </div>
+                  ) : (
+                    ''
+                  )}
+                  {bid ? (
+                    <div>
+                      <div className={styles.bidtitle}>
+                        Reserve Price :&nbsp;
+                        <Image
+                          src={auction.current.token?.icon}
+                          className={styles.tokenIcon}
+                        />
+                        {formatNumber(auction.current.reservePrice)}
+                      </div>
+                      <br />
+                      <div className={styles.bidtitle}>
+                        Highest Bid :&nbsp;
+                        <Image
+                          src={auction.current.token?.icon}
+                          className={styles.tokenIcon}
+                        />
+                        {formatNumber(bid.bid)}
+                        {bid.bid < auction.current.reservePrice
+                          ? ' -- Reserve price not met'
+                          : ''}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className={styles.bidtitle}>
+                      No bids yet (Reserve Price :&nbsp;
+                      <Image
+                        src={auction.current.token?.icon}
+                        className={styles.tokenIcon}
+                      />
+                      {formatNumber(auction.current.reservePrice)}
+                      {minBid > 0 &&
+                        ` | First Bid
+                      should match reserve price`}
+                      )
+                    </div>
+                  )}
+
+                  {!isMine &&
+                    auctionActive() &&
+                    bid?.bidder?.toLowerCase() === account?.toLowerCase() &&
+                    now.getTime() / 1000 >=
+                      auction?.current?.startTime + 5184000 && (
+                      <div
+                        className={cx(
+                          styles.withdrawBid,
+                          bidWithdrawing && styles.disabled
+                        )}
+                        onClick={() => handleWithdrawBid()}
+                      >
+                        {bidWithdrawing
+                          ? 'Withdrawing Bid...'
+                          : 'Withdraw Bid'}
+                      </div>
+                    )}
+
+                  {!isMine &&
+                    (!auctionActive() &&
+                    bid?.bidder?.toLowerCase() === account?.toLowerCase()
+                      ? now.getTime() / 1000 >=
+                          auction?.current?.endTime + 43200 && (
+                          <div
+                            className={cx(
+                              styles.withdrawBid,
+                              bidWithdrawing && styles.disabled
+                            )}
+                            onClick={() => handleWithdrawBid()}
+                          >
+                            {bidWithdrawing
+                              ? 'Withdrawing Bid...'
+                              : 'Withdraw Bid'}
+                          </div>
+                        )
+                      : // )
+                        !isMine &&
+                        bid?.bidder?.toLowerCase() !==
+                          account?.toLowerCase() &&
+                        auctionActive() && (
+                          <div
+                            className={cx(
+                              styles.placeBid,
+                              bidPlacing && styles.disabled
+                            )}
+                            onClick={() => setBidModalVisible(true)}
+                          >
+                            Place Bid
+                          </div>
+                        ))}
+                  {isMine && auctionEnded && !auction.current.resulted && (
+                    <div
+                      className={cx(
+                        styles.placeBid,
+                        resulting && styles.disabled
+                      )}
+                      onClick={
+                        bid === null ||
+                        bid?.bid < auction.current?.reservePrice
+                          ? cancelCurrentAuction
+                          : handleResultAuction
+                      }
+                    >
+                      {auctionCancelConfirming ? (
+                        <ClipLoader color="#FFF" size={16} />
+                      ) : bid === null ||
+                        bid?.bid < auction.current.reservePrice ? (
+                        'Reserve Price not met. Cancel Auction'
+                      ) : (
+                        'Accept highest bid'
+                      )}
+                    </div>
+                  )}
+                </div>
+              </Panel>
             </div>
           )}
           {!bundleID && (
-            <div className={styles.panelWrapper}>
-     
-            </div>
+             <div className={styles.panelWrapper}>
+             <Panel title="Price History" icon={TimelineIcon}>
+            {/* <ReactResizeDetector handleWidth>
+    {({ width }) =>
+      width > 0 ? (
+        <div className={styles.chartWrapper}>
+          <div className={styles.chart}>
+            <LineChart
+              width={width}
+              height={250}
+              data={data}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <XAxis dataKey="date" />
+              <YAxis />
+              <ChartTooltip />
+              <CartesianGrid stroke="#eee" />
+              <Line type="monotone" dataKey="price" stroke="#2479FA" />
+            </LineChart>
+          </div>
+        </div>
+      ) : (
+        <div>{width}</div>
+      )
+    }
+  </ReactResizeDetector>*/}
+             </Panel>
+           </div>
           )}
           <div className={styles.panelWrapper}>
-            
+            <Panel title="Listings" icon={LocalOfferIcon} expanded>
+              <div className={styles.listings}>
+                <div className={cx(styles.listing, styles.heading)}>
+                  <div className={styles.owner}>From</div>
+                  <div className={styles.price}>Price</div>
+                  {tokenInfo?.totalSupply > 1 && (
+                    <div className={styles.quantity}>Quantity</div>
+                  )}
+                  <div className={styles.buy} />
+                </div>
+                {bundleID
+                  ? bundleListing.current && (
+                      <div className={styles.listing}>
+                        <div className={styles.owner}>
+                          {loading ? (
+                            <Skeleton width={100} height={20} />
+                          ) : (
+                            <Link to={`/account/${owner}`}>
+                              <div className={styles.userAvatarWrapper}>
+                                {ownerInfo?.imageHash ? (
+                                  <Image
+                                    src={`https://cloudflare-ipfs.com/ipfs/${ownerInfo.imageHash}`}
+                                    className={styles.userAvatar}
+                                  />
+                                ) : (
+                                  <Identicon
+                                    account={owner}
+                                    size={24}
+                                    className={styles.userAvatar}
+                                  />
+                                )}
+                              </div>
+                              {isMine
+                                ? 'Me'
+                                : ownerInfo?.alias || shortenAddress(owner)}
+                            </Link>
+                          )}
+                        </div>
+                        <div className={styles.price}>
+                          {loading ? (
+                            <Skeleton width={100} height={20} />
+                          ) : (
+                            <>
+                              <Image
+                                src={bundleListing.current.token?.icon}
+                                className={styles.tokenIcon}
+                              />
+                              {formatNumber(bundleListing.current.price)}
+                            </>
+                          )}
+                        </div>
+                        <div className={styles.buy}>
+                          {!isMine && (
+                            <TxButton
+                              className={cx(
+                                styles.buyButton,
+                                buyingItem && styles.disabled
+                              )}
+                              onClick={handleBuyBundle}
+                            >
+                              {buyingItem ? (
+                                <ClipLoader color="#FFF" size={16} />
+                              ) : (
+                                'Buy'
+                              )}
+                            </TxButton>
+                          )}
+                        </div>
+                      </div>
+                    )
+                  : listings.current.map((listing, idx) => (
+                      <div className={styles.listing} key={idx}>
+                        <div className={styles.owner}>
+                          <Link to={`/account/${listing.owner}`}>
+                            <div className={styles.userAvatarWrapper}>
+                              {listing.image ? (
+                                <Image
+                                  src={`https://cloudflare-ipfs.com/ipfs/${listing.image}`}
+                                  className={styles.userAvatar}
+                                />
+                              ) : (
+                                <Identicon
+                                  account={listing.owner}
+                                  size={24}
+                                  className={styles.userAvatar}
+                                />
+                              )}
+                            </div>
+                            {listing.alias || listing.owner?.substr(0, 6)}
+                          </Link>
+                        </div>
+                        <div className={styles.price}>
+                          <Image
+                            src={listing.token?.icon}
+                            className={styles.tokenIcon}
+                          />
+                          {formatNumber(listing.price)}&nbsp;(
+                          {prices[listing.token?.address] !== undefined ? (
+                            `$${(
+                              listing.price * prices[listing.token?.address]
+                            ).toFixed(3)}`
+                          ) : (
+                            <Skeleton width={60} height={24} />
+                          )}
+                          )
+                        </div>
+                        {tokenInfo?.totalSupply > 1 && (
+                          <div className={styles.quantity}>
+                            {formatNumber(listing.quantity)}
+                          </div>
+                        )}
+                        <div className={styles.buy}>
+                          {listing.owner.toLowerCase() !==
+                            account?.toLowerCase() && (
+                            <TxButton
+                              className={cx(
+                                styles.buyButton,
+                                buyingItem && styles.disabled
+                              )}
+                              onClick={() => handleBuyItem(listing)}
+                            >
+                              {buyingItem ? (
+                                <ClipLoader color="#FFF" size={16} />
+                              ) : (
+                                'Buy'
+                              )}
+                            </TxButton>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+              </div>
+            </Panel>
           </div>
           <div className={styles.panelWrapper}>
-            
+            <Panel title="Direct Offers" icon={TocIcon} expanded>
+              <div className={styles.offers}>
+                {offers.current.length ? (
+                  <>
+                    <div className={cx(styles.offer, styles.heading)}>
+                      <div className={styles.owner}>From</div>
+                      <div className={styles.price}>Price</div>
+                      {tokenInfo?.totalSupply > 1 && (
+                        <div className={styles.quantity}>Quantity</div>
+                      )}
+                      <div className={styles.quantity}>Type</div>
+                      <div className={styles.deadline}>Expires In</div>
+                      <div className={styles.buy} />
+                    </div>
+                    {offers.current
+                      .filter(offer => offer.deadline > now.getTime())
+                      .sort((a, b) =>
+                        a.pricePerItem < b.pricePerItem ? 1 : -1
+                      )
+                      .map((offer, idx) => (
+                        <div className={styles.offer} key={idx}>
+                          <div className={styles.owner}>
+                            <Link to={`/account/${offer.creator}`}>
+                              <div className={styles.userAvatarWrapper}>
+                                {offer.image ? (
+                                  <Image
+                                    src={`https://cloudflare-ipfs.com/ipfs/${offer.image}`}
+                                    className={styles.userAvatar}
+                                  />
+                                ) : (
+                                  <Identicon
+                                    account={offer.creator}
+                                    size={24}
+                                    className={styles.userAvatar}
+                                  />
+                                )}
+                              </div>
+                              {offer.alias || offer.creator?.substr(0, 6)}
+                            </Link>
+                          </div>
+                          {offer.type === 'token' ? (
+                            <div className={styles.price}>
+                              <Image
+                                src={offer.token?.icon}
+                                className={styles.tokenIcon}
+                              />
+                              {formatNumber(
+                                offer.pricePerItem || offer.price
+                              )}
+                              &nbsp;(
+                              {prices[offer.token.address] !== undefined ? (
+                                `$${(
+                                  (offer.pricePerItem || offer.price) *
+                                  prices[offer.token.address]
+                                ).toFixed(3)}`
+                              ) : (
+                                <Skeleton width={60} height={24} />
+                              )}
+                              )
+                            </div>
+                          ) : (
+                            <div className={styles.price}>
+                              $
+                              {formatNumber(
+                                offer.pricePerItem || offer.price
+                              )}
+                            </div>
+                          )}
+                          <div className={styles.quantity}>{offer.type}</div>
+                          {tokenInfo?.totalSupply > 1 && (
+                            <div className={styles.quantity}>
+                              {formatNumber(offer.quantity)}
+                            </div>
+                          )}
+                          <div className={styles.deadline}>
+                            {formatExpiration(offer.deadline)}
+                          </div>
+                          {offer.signed && offer.type === 'token' && (
+                            <div className={styles.buy}>
+                              {(isMine ||
+                                (myHolding &&
+                                  myHolding.supply >= offer.quantity)) &&
+                                offer.creator?.toLowerCase() !==
+                                  account?.toLowerCase() && (
+                                  <div
+                                    className={cx(
+                                      styles.buyButton,
+                                      (salesContractApproving ||
+                                        offerAccepting) &&
+                                        styles.disabled
+                                    )}
+                                    onClick={
+                                      bundleID
+                                        ? isBundleContractApproved
+                                          ? () => handleAcceptOffer(offer)
+                                          : handleApproveBundleSalesContract
+                                        : salesContractApproved
+                                        ? () => handleAcceptOffer(offer)
+                                        : handleApproveSalesContract
+                                    }
+                                  >
+                                    {!(bundleID
+                                      ? isBundleContractApproved
+                                      : salesContractApproved) ? (
+                                      salesContractApproving ? (
+                                        <ClipLoader color="#FFF" size={16} />
+                                      ) : (
+                                        'Approve'
+                                      )
+                                    ) : offerAccepting ? (
+                                      <ClipLoader color="#FFF" size={16} />
+                                    ) : (
+                                      'Accept'
+                                    )}
+                                  </div>
+                                )}
+                              {offer.creator?.toLowerCase() ===
+                                account?.toLowerCase() && (
+                                <div
+                                  className={cx(
+                                    styles.buyButton,
+                                    offerCanceling && styles.disabled
+                                  )}
+                                  onClick={() => handleCancelOffer()}
+                                >
+                                  {offerCanceling ? (
+                                    <ClipLoader color="#FFF" size={16} />
+                                  ) : (
+                                    'Withdraw'
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          )}
+                          {offer.type === 'escrow' && (
+                            <>
+                              {offer.owner?.toLowerCase() ===
+                                account?.toLowerCase() &&
+                                offer.webhookType === 'payment_received' && (
+                                  <div
+                                    className={cx(
+                                      styles.buyButton,
+                                      offerCanceling && styles.disabled
+                                    )}
+                                    onClick={() =>
+                                      handleApproveEscrowOffer(offer)
+                                    }
+                                  >
+                                    {offerCanceling ? (
+                                      <ClipLoader color="#FFF" size={16} />
+                                    ) : (
+                                      'Approve'
+                                    )}
+                                  </div>
+                                )}
+                              {isEscrowConfirmed(offer) &&
+                                offer.creator?.toLowerCase() ===
+                                  account?.toLowerCase() && (
+                                  <div
+                                    className={cx(
+                                      styles.buyButton,
+                                      offerCanceling && styles.disabled
+                                    )}
+                                    onClick={() =>
+                                      handleCancelEscrowOffer(offer)
+                                    }
+                                  >
+                                    {offerCanceling ? (
+                                      <ClipLoader color="#FFF" size={16} />
+                                    ) : (
+                                      'Withdraw'
+                                    )}
+                                  </div>
+                                )}
+                            </>
+                          )}
+                        </div>
+                      ))}
+                  </>
+                ) : (
+                  <div className={styles.noOffers}>
+                    <div className={styles.noOffersLabel}>No Offers Yet</div>
+                    {(!isMine ||
+                      (tokenType.current === 1155 &&
+                        myHolding.supply < tokenInfo.totalSupply)) &&
+                      (!auction.current || auction.current.resulted) && (
+                        <TxButton
+                          className={cx(
+                            styles.makeOffer,
+                            offerPlacing && styles.disabled
+                          )}
+                          onClick={() => handleMakeOfferModal()}
+                        >
+                          Make Offer
+                        </TxButton>
+                      )}
+                  </div>
+                )}
+              </div>
+            </Panel>
           </div>
           {bundleID && (
             <div className={styles.panelWrapper}>
-             
+              <Panel title="Items" icon={ViewModuleIcon} expanded>
+                <div className={styles.items}>
+                  {(loading
+                    ? [null, null, null]
+                    : bundleItems.current
+                  ).map((item, idx) => renderBundleItem(item, idx))}
+                </div>
+              </Panel>
             </div>
           )}
         </div>
@@ -1003,7 +1538,7 @@ return (
           <div className={styles.tradeHistoryTitle}>{filters[filter]}</div>
           {!bundleID && (
             <div className={styles.filter} onClick={handleMenuOpen}>
-              <img src={filterIcon} className={styles.filterIcon} />
+              <Image src={filterIcon} className={styles.filterIcon} />
             </div>
           )}
         </div>
@@ -1030,7 +1565,7 @@ return (
                   <div className={styles.historyPrice}>
                     {history ? (
                       <>
-                        <img
+                        <Image
                           src={history.token?.icon}
                           className={styles.tokenIcon}
                         />
@@ -1059,7 +1594,7 @@ return (
                     <Link to={`/account/${history.from}`}>
                       <div className={styles.userAvatarWrapper}>
                         {history.fromImage ? (
-                          <img
+                          <Image
                             src={`https://cloudflare-ipfs.com/ipfs/${history.fromImage}`}
                             className={styles.userAvatar}
                           />
@@ -1082,7 +1617,7 @@ return (
                     <Link to={`/account/${history.to}`}>
                       <div className={styles.userAvatarWrapper}>
                         {history.toImage ? (
-                          <img
+                          <Image
                             src={`https://cloudflare-ipfs.com/ipfs/${history.toImage}`}
                             className={styles.userAvatar}
                           />
@@ -1139,7 +1674,7 @@ return (
     >
       <CopyToClipboard text={currentUrl} onCopy={handleCopyLink}>
         <MenuItem classes={{ root: styles.menuItem }}>
-          <img src={iconArtion} />
+          <Image src={iconArtion} />
           Copy Link
         </MenuItem>
       </CopyToClipboard>
@@ -1147,14 +1682,14 @@ return (
         classes={{ root: styles.menuItem }}
         onClick={handleShareOnFacebook}
       >
-        <img src={iconFacebook} />
+        <Image src={iconFacebook} />
         Share on Facebook
       </MenuItem>
       <MenuItem
         classes={{ root: styles.menuItem }}
         onClick={handleShareToTwitter}
       >
-        <img src={iconTwitter} />
+        <Image src={iconTwitter} />
         Share to Twitter
       </MenuItem>
     </Menu>
@@ -1214,7 +1749,7 @@ return (
       token={auction.current?.token}
       firstBid={bid?.bid ? false : minBid > 0 ? true : false}
     />
-    {/*<OwnersModal
+    <OwnersModal
       visible={ownersModalVisible}
       onClose={() => setOwnersModalVisible(false)}
       holders={holders}
@@ -1223,7 +1758,7 @@ return (
       visible={likesModalVisible}
       onClose={() => setLikesModalVisible(false)}
       users={likeUsersFetching ? new Array(5).fill(null) : likeUsers.current}
-    />*/}
+    />
   </div>
 );
 };

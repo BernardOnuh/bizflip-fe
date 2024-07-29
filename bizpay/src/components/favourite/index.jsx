@@ -4,6 +4,7 @@ import styles from './styles.module.scss';
 import cx from 'classnames';
 import { Grid } from '@mui/material';
 import data from './data';
+import Image from 'next/image';
 
 const Favourite = ({ nft }) => {
   console.log(nft);
@@ -21,7 +22,7 @@ const Favourite = ({ nft }) => {
                 <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
                   <div className={styles.relative}>
                     <div className={styles.inner_relative}>
-                      <img
+                      <Image
                         className={cx(styles.card, styles.width_300)}
                         src={character.url}
                         alt={character.name}

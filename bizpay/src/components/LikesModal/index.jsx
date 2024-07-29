@@ -4,7 +4,7 @@ import Skeleton from 'react-loading-skeleton';
 
 import { shortenAddress } from '../utils';
 import Identicon from '../Identicon';
-
+import Image from 'next/image';
 import Modal from '../Modal';
 import styles from './styles.module.scss';
 
@@ -30,7 +30,7 @@ const LikesModal = ({ visible, onClose, users }) => {
               {!user ? (
                 <Skeleton width={40} height={40} />
               ) : user.imageHash ? (
-                <img
+                <Image
                   src={`https://cloudflare-ipfs.com/ipfs/${user.imageHash}`}
                   width={40}
                   height={40}

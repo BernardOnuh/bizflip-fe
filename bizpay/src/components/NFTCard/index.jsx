@@ -13,7 +13,7 @@ import { Oval } from 'react-loader-spinner';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ReactPlayer from 'react-player';
-
+import Image from 'next/image';
 import SuspenseImg from '../../components/SuspenseImg';
 import BootstrapTooltip from '../BootstrapTooltip';
 import { formatNumber, getRandomIPFS } from '../utils';
@@ -313,7 +313,7 @@ const BaseCard = ({ item, loading, style, create, onCreate, onLike }) => {
             <div className={styles.statBox}>
               <div className={styles.statItem}>
                 <BootstrapTooltip title="Price">
-                  <img
+                  <Image
                     src={wFTMLogo.src}
                     className={styles.statItemIcon}
                     alt="FTM"
@@ -357,7 +357,7 @@ const BaseCard = ({ item, loading, style, create, onCreate, onLike }) => {
               className={styles.createBtn}
               onClick={() => onCreate(item)}
             >
-              <img src={iconPlus.src} alt="Create" />
+              <Image src={iconPlus.src} alt="Create" />
               <span className={styles.createBtnLabel}>Create Bundle</span>
             </button>
           </div>

@@ -12,6 +12,7 @@ import { formatUnits } from 'viem';
 import Modal from '../Modal';
 import styles from '../Modal/common.module.scss';
 import InputError from '../InputError';
+import Image from 'next/image';
 
 const BidModal = ({
   visible,
@@ -104,14 +105,14 @@ const BidModal = ({
                   methods.addItem(item);
                 }}
               >
-                <img src={item?.icon} className={styles.tokenIcon} />
+                <Image src={item?.icon} className={styles.tokenIcon} />
                 <div className={styles.tokenSymbol}>{item.symbol}</div>
               </div>
             )}
             contentRenderer={({ props: { values } }) =>
               values.length > 0 ? (
                 <div className={styles.selectedToken}>
-                  <img src={values[0]?.icon} className={styles.tokenIcon} />
+                  <Image src={values[0]?.icon} className={styles.tokenIcon} />
                   <div className={styles.tokenSymbol}>{values[0].symbol}</div>
                 </div>
               ) : (
