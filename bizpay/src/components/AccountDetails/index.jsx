@@ -25,7 +25,7 @@ import usePrevious from '../hooks/usePrevious';
 import HeaderActions from '../actions/header.actions';
 import ModalActions from '../actions/modal.actions';
 import CollectionsActions from '../actions/collections.actions';
-
+import Link from 'next/link'
 import iconCopy from '../../../public/images/svgs/copy.svg'
 import iconSettings from '../../../public/images/svgs/settings.svg';
 import iconShare from '../../../public/images/svgs/share.svg';
