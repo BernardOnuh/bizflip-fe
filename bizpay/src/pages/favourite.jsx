@@ -3,7 +3,6 @@ import Favourite from "@/components/favourite";
 
 
 
-
 export default function valuation() {
   return (
     <div className="">
