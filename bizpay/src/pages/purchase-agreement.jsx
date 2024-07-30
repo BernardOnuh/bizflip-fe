@@ -1,13 +1,13 @@
+import PurchaseAgreement from "@/components/purchase-agreement";
 import Chat from '../components/Footer/Chatbox/chat'
 import Header from "@/components/Header";
-import Subscription from "@/components/Subscription";
 
 
-export default function valuation() {
+export default function dox() {
   return (
     <div className="">
       <Header/>
-     <Subscription />
+     <PurchaseAgreement/>
      <Chat/>
     </div>
   );

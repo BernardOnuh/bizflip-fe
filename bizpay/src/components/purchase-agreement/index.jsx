@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 const PurchaseAgreement = () => {
   return (
     <div className={styles.container}>
-      <Header border />
+    
       <div className={styles.contents}>
         <h2 className={styles.centered}>ASSET PURCHASE AGREEMENT</h2>
         <p>

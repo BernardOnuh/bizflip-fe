@@ -1,13 +1,13 @@
+import TermsOfService from "@/components/termsofservice";
 import Chat from '../components/Footer/Chatbox/chat'
 import Header from "@/components/Header";
-import Subscription from "@/components/Subscription";
 
 
-export default function valuation() {
+export default function dox() {
   return (
     <div className="">
       <Header/>
-     <Subscription />
+     <TermsOfService/>
      <Chat/>
     </div>
   );
