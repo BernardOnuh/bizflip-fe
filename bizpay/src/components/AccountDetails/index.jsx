@@ -655,7 +655,7 @@ const AccountDetails = () => {
             {loading ? (
               <Skeleton width="100%" height={200} />
             ) : bannerHash || user.bannerHash ? (
-              <img
+              <Image
                 src={`https://cloudflare-ipfs.com/ipfs/${bannerHash ||
                   user.bannerHash}`}
                 className={styles.bannerImg}
@@ -679,14 +679,14 @@ const AccountDetails = () => {
           <div className={styles.buttonsWrapper}>
             {isMe && (
               <div className={styles.settings} onClick={openAccountSettings}>
-                <img src={iconSettings} className={styles.settingsIcon} />
+                <Image src={iconSettings} className={styles.settingsIcon} />
               </div>
             )}
             <div
               className={styles.settings}
               onClick={e => setAnchorEl(e.currentTarget)}
             >
-              <img src={iconShare} className={styles.settingsIcon} />
+              <Image src={iconShare} className={styles.settingsIcon} />
             </div>
           </div>
           <div className={styles.wrapper}>
@@ -694,7 +694,7 @@ const AccountDetails = () => {
               {loading ? (
                 <Skeleton width={160} height={160} className={styles.avatar} />
               ) : user.imageHash ? (
-                <img
+                <Image
                   src={`https://cloudflare-ipfs.com/ipfs/${user.imageHash}`}
                   className={styles.avatar}
                 />
@@ -745,7 +745,7 @@ const AccountDetails = () => {
                 )}
                 <CopyToClipboard text={uid} onCopy={handleCopyAddress}>
                   <div className={styles.copyIcon}>
-                    <img
+                    <Image
                       src={iconCopy}
                       onMouseOver={handleMouseOver}
                       onMouseLeave={handleMouseLeave}
@@ -886,7 +886,7 @@ const AccountDetails = () => {
                           {activity ? (
                             <>
                               <div className={styles.tokenLogo}>
-                                <img src={activity.token?.icon} />
+                                <Image src={activity.token?.icon} />
                               </div>
                               {activity.price}
                             </>
@@ -909,7 +909,7 @@ const AccountDetails = () => {
                             >
                               <div className={styles.ownerAvatarWrapper}>
                                 {activity.image ? (
-                                  <img
+                                  <Image
                                     src={`https://cloudflare-ipfs.com/ipfs/${activity.image}`}
                                     className={styles.ownerAvatar}
                                   />
@@ -988,7 +988,7 @@ const AccountDetails = () => {
                           >
                             <div className={styles.ownerAvatarWrapper}>
                               {offer.image ? (
-                                <img
+                                <Image
                                   src={`https://cloudflare-ipfs.com/ipfs/${offer.image}`}
                                   className={styles.ownerAvatar}
                                 />
@@ -1012,7 +1012,7 @@ const AccountDetails = () => {
                             <>
                               {offer.type === 'token' ? (
                                 <div className={styles.tokenLogo}>
-                                  <img src={offer.token?.icon} />
+                                  <Image src={offer.token?.icon} />
                                 </div>
                               ) : (
                                 '$'
@@ -1088,7 +1088,7 @@ const AccountDetails = () => {
                           <>
                             {bid.type === 'token' ? (
                               <div className={styles.tokenLogo}>
-                                <img src={bid.token?.icon} />
+                                <Image src={bid.token?.icon} />
                               </div>
                             ) : (
                               '$'
@@ -1137,7 +1137,7 @@ const AccountDetails = () => {
         >
           <CopyToClipboard text={currentUrl} onCopy={handleCopyLink}>
             <MenuItem classes={{ root: styles.menuItem }}>
-              <img src={iconArtion} />
+              <Image src={iconArtion} />
               Copy Link
             </MenuItem>
           </CopyToClipboard>
@@ -1145,14 +1145,14 @@ const AccountDetails = () => {
             classes={{ root: styles.menuItem }}
             onClick={handleShareOnFacebook}
           >
-            <img src={iconFacebook} />
+            <Image src={iconFacebook} />
             Share on Facebook
           </MenuItem>
           <MenuItem
             classes={{ root: styles.menuItem }}
             onClick={handleShareToTwitter}
           >
-            <img src={iconTwitter} />
+            <Image src={iconTwitter} />
             Share to Twitter
           </MenuItem>
         </Menu>
