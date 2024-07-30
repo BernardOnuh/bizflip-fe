@@ -11,7 +11,7 @@ import { ClipLoader } from 'react-spinners';
 import ReactPlayer from 'react-player';
 import Loader from 'react-loader-spinner';
 import axios from 'axios';
-
+import Image from 'next/image'
 import NFTsGrid from '../NFTsGrid';
 import Identicon from '../Identicon';
 import NewBundleModal from '../NewBundleModal';
