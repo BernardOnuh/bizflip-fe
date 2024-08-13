@@ -33,7 +33,6 @@ const OfferModal = ({
   const title = type === 'offer' ? 'Place your offer' : 'Invest';
   const label = type === 'offer' ? 'Place Offer' : 'Invest';
   const [price, setPrice] = useState('');
-  const [quantity, setQuantity] = useState('1');
   const [endTime, setEndTime] = useState(
     new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
   );
@@ -53,7 +52,6 @@ const OfferModal = ({
   useEffect(() => {
     if (visible) {
       setPrice('');
-      setQuantity('1');
       setEndTime(new Date(new Date().getTime() + 24 * 60 * 60 * 1000));
       if (tokens?.length > 1) {
         setSelected([tokens[0]]);
@@ -104,24 +102,8 @@ const OfferModal = ({
     getTokenPrice();
   }, [selected]);
 
-  const handleQuantityChange = e => {
-    const val = e.target.value;
-    if (!val) {
-      setQuantity('');
-      return;
-    }
-
-    if (isNaN(val)) return;
-
-    const _quantity = parseInt(val);
-    setQuantity(Math.min(_quantity, totalSupply));
-  };
-
   const handleMakeOffer = () => {
-    let quant = 1;
-    if (totalSupply > 1) {
-      quant = parseInt(quantity);
-    }
+    const quant = 1; // Default to 1 since only one is purchasable
 
     if (hasTokenOffer()) {
       // showToast('error', 'You have already submitted the offer'); // Dormant: to be integrated later
@@ -132,8 +114,7 @@ const OfferModal = ({
   };
 
   const validateInput = () => {
-    if (price.length === 0 || parseFloat(price) == 0) return false;
-    if (totalSupply > 1 && quantity.length === 0) return false;
+    if (price.length === 0 || parseFloat(price) === 0) return false;
     if (endTime.getTime() < new Date().getTime()) return false;
     return true;
   };
@@ -232,20 +213,6 @@ const OfferModal = ({
         </div>
         <InputError text={inputError} />
       </div>
-      {totalSupply !== null && (
-        <div className={styles.formGroup}>
-          <div className={styles.formLabel}>Quantity</div>
-          <div className={styles.formInputCont}>
-            <input
-              className={styles.formInput}
-              placeholder={totalSupply}
-              value={quantity}
-              onChange={handleQuantityChange}
-              disabled={confirming || totalSupply === 1}
-            />
-          </div>
-        </div>
-      )}
       <div className={styles.formGroup}>
         <div className={styles.formLabel}>Offer Expiration</div>
         <div className={styles.formInputCont}>

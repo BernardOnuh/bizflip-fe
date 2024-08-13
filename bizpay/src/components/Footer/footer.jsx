@@ -177,7 +177,7 @@ const Footer = ({ border }) => {
         </div>
         <div className={styles.footerServices}>
           <div className={styles.footerCompany}>
-            <p>© 2023 The Smile Guys Inc, All Rights Reserved.</p>
+            <p>© 2024 The Smile Guys Inc, All Rights Reserved.</p>
           </div>
           <div className={styles.footerServicePages}>
             <Link href="/privacy-policy" passHref>

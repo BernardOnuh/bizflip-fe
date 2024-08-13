@@ -785,10 +785,34 @@ const AccountDetails = () => {
         </div>
         <div className={styles.content}>
           <div className={styles.contentSidebar}>
-            <div className={styles.tabsGroup}>
+            {/*<div className={styles.tabsGroup}>
               <div className={styles.groupTitle}>My Items</div>
               {renderTab(
-                'Single Items',
+                'Items',
+                IconList,
+                0,
+                count,
+                fetching || fguresFetching
+              )}
+              {/* {renderTab(
+                'Bundles',
+                IconBundle,
+                1,
+                bundleCount,
+                bundleFetching || fguresFetching
+              )}
+              {renderTab(
+                'Favorited',
+                IconHeart,
+                2,
+                favCount,
+                favFetching || fguresFetching
+              )}
+            </div>*/}
+            <div className={styles.tabsGroup}>
+              <div className={styles.groupTitle}>Messages</div>
+              {renderTab(
+                'Messages',
                 IconList,
                 0,
                 count,
@@ -801,13 +825,7 @@ const AccountDetails = () => {
                 bundleCount,
                 bundleFetching || fguresFetching
               )} */}
-              {renderTab(
-                'Favorited',
-                IconHeart,
-                2,
-                favCount,
-                favFetching || fguresFetching
-              )}
+              
             </div>
             <div className={styles.tabsGroup}>
               <div className={styles.groupTitle}>Account</div>

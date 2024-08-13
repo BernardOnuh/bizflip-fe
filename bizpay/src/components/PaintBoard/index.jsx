@@ -170,12 +170,12 @@ const PaintBoard = () => {
                 <div className={styles.lengthIndicator}>{symbol.length}/20</div>
               </div>
               <div className={styles.formGroup}>
-                <p className={styles.formLabel}>NFT type</p>
+                <p className={styles.formLabel}>Asset type</p>
                 <TextField
                   variant="outlined"
                   fullWidth
                   maxLength={20}
-                  placeholder="NFT Type"
+                  placeholder="Asset Type"
                   value={nftType}
                   onChange={e => setNftType(e.target.value)}
                   disabled={isMinting}
@@ -243,17 +243,7 @@ const PaintBoard = () => {
                   disabled={isMinting}
                 />
               </div>
-              <div className={styles.formGroup}>
-                <p className={styles.formLabel}>Xtra</p>
-                <PriceInput
-                  className={styles.formInput}
-                  placeholder="Xtra"
-                  decimals={0}
-                  value={'' + xtra}
-                  onChange={setXtra}
-                  disabled={isMinting}
-                />
-              </div>
+             
               <div className={styles.formGroup}>
                 <p className={styles.formLabel}>Revenue</p>
                 <PriceInput

@@ -67,7 +67,13 @@ const QnA = () => {
         return;
       }
 
+      // Check if the answer is "No" and handle accordingly
       if (activeStepProcess === 2) {
+        if (answer3 === 'No') {
+          // Handle the "No" selection, e.g., show a message or stop the process
+          alert('You must agree to act in good faith to proceed.');
+          return;
+        }
         router.push({
           pathname: '/nft-swipe',
           /*query: {

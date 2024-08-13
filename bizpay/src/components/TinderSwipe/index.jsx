@@ -26,7 +26,7 @@ const NFTSwipe = () => {
   const handleClose = () => setOpen(false); // Ensure the modal closes
 
   const handleMakeOfferModal = () => {
-      setOfferModalVisible(true);
+    setOfferModalVisible(true);
   };
 
   const makeAnOffer = async () => {
@@ -68,8 +68,7 @@ const NFTSwipe = () => {
     },
   ];
 
-
-  const handleLater = e => {
+  const handleLater = (e) => {
     console.log('handleLater', e.currentTarget);
   };
 
@@ -80,7 +79,14 @@ const NFTSwipe = () => {
 
   return (
     <div className={styles.body}>
-      <div className={cx(styles.swipeContainer, 'flex', 'items-center', 'justify-center')}>
+      <div
+        className={cx(
+          styles.swipeContainer,
+          'flex',
+          'items-center',
+          'justify-center'
+        )}
+      >
         {data.map((person) => (
           <SwipeCard
             key={person.name}
@@ -93,7 +99,7 @@ const NFTSwipe = () => {
         ))}
       </div>
       <div className={cx(styles.button)}>
-        <div className={styles.swipeButtons}>
+        {/*<div className={styles.swipeButtons}>
           <IconButton className={styles.swipeButtons_repeat}>
             <ReplayIcon fontSize="large" />
           </IconButton>
@@ -120,18 +126,18 @@ const NFTSwipe = () => {
               <FlashOnIcon fontSize="large" />
             </IconButton>
           </Link>
-        </div>
+        </div>*/}
         <OfferModal
-            visible={offerModalVisible}
-            onClose={() => setOfferModalVisible(false)}
-           // onMakeOffer={handleMakeOffer}
-            confirming={offerPlacing}
-            type={type}
-            //totalSupply={tokenType.current === 1155 ? maxSupply() : null}
-            //offers={selectedToken && selectedToken.offers}
-            //escrowOffer={selectedToken && selectedToken.escrowOffer}
-            //account={account}
-          />
+          visible={offerModalVisible}
+          onClose={() => setOfferModalVisible(false)}
+          // onMakeOffer={handleMakeOffer}
+          confirming={offerPlacing}
+          type={type}
+          //totalSupply={tokenType.current === 1155 ? maxSupply() : null}
+          //offers={selectedToken && selectedToken.offers}
+          //escrowOffer={selectedToken && selectedToken.escrowOffer}
+          //account={account}
+        />
         <NftItem
           setModal={open}
           close={handleClose}
