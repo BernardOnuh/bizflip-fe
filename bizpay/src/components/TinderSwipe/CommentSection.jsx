@@ -44,7 +44,7 @@ const CommentSection = ({ nftId }) => {
 
   return (
     <div className={styles.commentSection}>
-      <h4>Comments</h4>
+      <h4 className='text-white font-sm'>Comments</h4>
       <div className={styles.addComment}>
       <textarea
         className={styles.textarea}
@@ -52,11 +52,14 @@ const CommentSection = ({ nftId }) => {
         onChange={(e) => setNewComment(e.target.value)}
         placeholder="Add a comment..."
         />
-        <button className={styles.postButton} onClick={handleAddComment}>Post</button>
+        <div className={styles.actions}>
+          <button className={styles.postButton} onClick={handleAddComment}>Post</button>
+          <Button className={styles.seeCommentsButton} variant="contained" onClick={handleModalOpen}>
+            See Comments
+          </Button>
+        </div>
       </div>
-      <Button className={styles.seeCommentsButton} variant="contained" onClick={handleModalOpen}>
-        See Comments
-        </Button>
+      
 
       <Modal open={isModalOpen} onClose={handleModalClose}>
         <div className={styles.modalContent}>
@@ -92,10 +95,19 @@ const CommentSection = ({ nftId }) => {
         onClose={handleSnackbarClose}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
-        <Alert onClose={handleSnackbarClose} severity="success" variant="filled">
+        <Alert
+          onClose={handleSnackbarClose}
+          severity="success"
+          variant="filled"
+          sx={{
+            backgroundColor: '#7b1fa2', // Violet background
+            color: 'white',
+          }}
+        >
           Post successfully made!
         </Alert>
       </Snackbar>
+
     </div>
   );
 };
