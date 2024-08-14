@@ -50,13 +50,40 @@ const CommentSection = ({ nftId }) => {
         className={styles.textarea}
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
-        placeholder="Add a comment..."
+        placeholder="Coming Soon..."
         />
         <div className={styles.actions}>
-          <button className={styles.postButton} onClick={handleAddComment}>Post</button>
-          <Button className={styles.seeCommentsButton} variant="contained" onClick={handleModalOpen}>
-            See Comments
-          </Button>
+        <Button
+          className={styles.postButton}
+          variant="contained"
+          onClick={handleAddComment}
+          style={{ 
+            backgroundColor: '#c71585', 
+            color: 'white', 
+            marginRight: '16px', 
+            opacity: 0.5, 
+            transition: 'opacity 0.3s ease' 
+          }}
+          onMouseEnter={(e) => e.target.style.opacity = 0.7}
+          onMouseLeave={(e) => e.target.style.opacity = 0.4}
+        >
+          Post
+        </Button>
+
+        <Button
+          className={styles.seeCommentsButton}
+          variant="contained"
+          onClick={handleModalOpen}
+          style={{ 
+            opacity: 0.8, 
+            transition: 'opacity 0.3s ease' 
+          }}
+          onMouseEnter={(e) => e.target.style.opacity = 1}
+          onMouseLeave={(e) => e.target.style.opacity = 0.8}
+        >
+          Comments
+        </Button>
+
         </div>
       </div>
       

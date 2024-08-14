@@ -39,7 +39,7 @@ const NftItem = ({ setModal, close, makeAnOffer, invest, later }) => {
                   }}
                 >
                   <div className={styles.buttons__text}>
-                    <u>maybe later</u>
+                    <u>Save for later</u>
                   </div>
                 </div>
               </div>

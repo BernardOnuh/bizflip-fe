@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import OfferModal from '../OfferModal';
 import SwipeCard from './SwipeCard';
-
+import CommentSection from './CommentSection';
 const FAV_NFT = [];
 
 const NFTSwipe = () => {
@@ -47,26 +47,35 @@ const NFTSwipe = () => {
       url: 'https://metadata.degods.com/g/476-dead.png',
       age: 25,
       description: 'A unique NFT with stunning artwork.',
+      revenue: 12000, // Example revenue in dollars
+      netIncome: 8000, // Example net income in dollars
     },
     {
       name: 'DeGod #578',
       url: 'https://img-cdn.magiceden.dev/rs:fill:400:400:0:0/plain/https://metadata.degods.com/g/578-dead.png',
       age: 30,
       description: 'An amazing NFT from the DeGods collection.',
+      revenue: 15000, // Example revenue in dollars
+      netIncome: 11000, // Example net income in dollars
     },
     {
       name: 'DeGod #3474',
       url: 'https://img-cdn.magiceden.dev/rs:fill:400:400:0:0/plain/https://metadata.degods.com/g/3474-dead.png',
       age: 22,
       description: 'A valuable NFT with a rich history.',
+      revenue: 18000, // Example revenue in dollars
+      netIncome: 12000, // Example net income in dollars
     },
     {
       name: 'Board Ape - #1146',
       url: 'https://i.seadn.io/gae/c_Q3RSFYxq_mBn6xRxAMZ7ByQDRsokyui7WOncKqklQd4AbzcDlXbZzNihFmGxpYEmvhEg5YUpZ8Fb6_bnxnBmpshocVjxRmfyjkh7E?auto=format&w=512',
       age: 28,
       description: 'A rare NFT from the Board Ape collection.',
+      revenue: 20000, // Example revenue in dollars
+      netIncome: 15000, // Example net income in dollars
     },
   ];
+  
 
   const handleLater = (e) => {
     console.log('handleLater', e.currentTarget);
@@ -89,13 +98,16 @@ const NFTSwipe = () => {
       >
         {data.map((person) => (
           <SwipeCard
-            key={person.name}
-            name={person.name}
-            url={person.url}
-            age={person.age}
-            description={person.description}
-            onSwipeRight={() => handleSwipeRight(person)}
-          />
+          key={person.name}
+          name={person.name}
+          url={person.url}
+          age={person.age}
+          revenue={person.revenue}  // Pass revenue
+          netIncome={person.netIncome}  // Pass net income
+          description={person.description}
+          onSwipeRight={() => handleSwipeRight(person)}
+        />
+        
         ))}
       </div>
       <div className={cx(styles.button)}>
