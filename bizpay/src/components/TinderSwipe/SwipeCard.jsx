@@ -7,11 +7,16 @@ const SwipeCard = ({ name, url, age, description, onSwipeRight }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleCardClick = (e) => {
-    // Prevent card flip when clicking inside textarea or input elements
-    if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') {
+    // Prevent card flip when clicking inside textarea, input, or comment section
+    if (
+      e.target.tagName === 'TEXTAREA' ||
+      e.target.tagName === 'INPUT' ||
+      e.target.closest(`.${styles.commentSection}`)
+    ) {
       e.stopPropagation();
       return;
     }
+
     e.preventDefault();
     setIsFlipped((prev) => !prev);
   };
@@ -53,7 +58,10 @@ const SwipeCard = ({ name, url, age, description, onSwipeRight }) => {
           <p>{description}</p>
         </div>
       </div>
-      <CommentSection nftId={name} />
+      {/* Ensure CommentSection is outside of the flipping card */}
+      <div className={styles.commentWrapper}>
+        <CommentSection nftId={name} />
+      </div>
     </TinderCard>
   );
 };
