@@ -5,7 +5,14 @@
 .addComment {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
   margin-bottom: 10px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .textarea {
@@ -24,26 +31,33 @@
 }
 
 .postButton {
-  background-color: #e91e63; /* Pink background */
+  background-color: #e91e63; /* Pink color */
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-right: 10px;
-}
+  transition: background-color 0.3s;
 
-.postButton:hover {
-  background-color: #d81b60; /* Darker pink on hover */
+  &:hover {
+    background-color: #d81b60; /* Darker pink on hover */
+  }
 }
 
 .seeCommentsButton {
   background-color: #7b1fa2; /* Violet background */
   color: white;
-}
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
 
-.seeCommentsButton:hover {
-  background-color: #6a1b9a; /* Darker violet on hover */
+  &:hover {
+    background-color: #6a1b9a; /* Darker violet on hover */
+  }
 }
 
 .commentList {
@@ -80,4 +94,16 @@
 
 .closeModal {
   margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .addComment {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .postButton,
+  .seeCommentsButton {
+    width: 100%;
+  }
 }

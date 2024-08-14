@@ -1,4 +1,3 @@
-// SwipeCard.js
 import React, { useState } from 'react';
 import TinderCard from 'react-tinder-card';
 import styles from './styles.module.scss';
@@ -8,12 +7,16 @@ const SwipeCard = ({ name, url, age, description, onSwipeRight }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleCardClick = (e) => {
+    // Prevent card flip when clicking inside textarea or input elements
+    if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') {
+      e.stopPropagation();
+      return;
+    }
     e.preventDefault();
     setIsFlipped((prev) => !prev);
   };
 
   const swiped = (direction, nameToDelete) => {
-    console.log('removing: ' + nameToDelete);
     if (direction === 'right') {
       onSwipeRight();
     }
